@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
+#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/12 15:37:41 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/12 16:59:37 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,10 @@ OBJ = ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
 	ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o \
 	ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o
 
-SRC_bonus = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
-OBJ_bonus = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o
+SRC_bonus = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+			ft_lstadd_back.c
+OBJ_bonus = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
+			ft_lstadd_back.o
 
 #cette ligne dit comment génerer le fichier name avec les objets
 #c'est une fonction.
