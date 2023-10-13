@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:03:05 by paul              #+#    #+#             */
-/*   Updated: 2023/10/12 12:46:52 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/13 14:17:54 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *str, const char *ref, size_t n)
 	i = 0;
 	if (!*ref)
 		return ((char *)str);
-	else if((!str && !n) || (!ref && !n))
+	else if ((!str && !n) || (!ref && !n))
 		return (NULL);
 	while (*str && i < n)
 	{

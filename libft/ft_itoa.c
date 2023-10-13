@@ -6,49 +6,69 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:50:51 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/12 11:14:59 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/13 17:10:41 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static void	ft_int_to_str(char *str, long n)
+static int	ft_size_char(long i)
 {
-	if (n < 9)
-		*str = n + '0';
-	else
+	int	j;
+
+	j = 0;
+	if (i == 0)
+		return (1);
+	while (i > 0)
 	{
-		*str = n % 10 + '0';
-		str --;
-		ft_int_to_str(str, n / 10);
+		j ++;
+		i /= 10;
+	}
+	return (j);
+}
+
+static void	ft_int_to_str(char *ptr, int i, long n)
+{
+	while (n > 0)
+	{
+		ptr[i--] = n % 10 + '0';
+		n /= 10;
 	}
 }
 
 char	*ft_itoa(int n)
 {
+	char	*ptr;
+	long	nbr;
+	int		imin;
 	int		isize;
-	char	*str;
-	long	i;
-	long	j;
 
-	isize = 1;
-	i = n;
-	if (i < 0)
-		i *= -1;
-	j = i;
-	while (i > 9)
+	nbr = n;
+	imin = 0;
+	if (nbr < 0)
 	{
-		i = i / 10;
-		isize ++;
+		imin = 1;
+		nbr *= -1;
 	}
-	if (n < 0)
-		isize ++;
-	str = (char *) malloc(isize + 1);
-	if (!str)
+	isize = ft_size_char(nbr);
+	ptr = (char *) malloc(isize + imin + 1);
+	if (!ptr)
 		return (NULL);
-	str[isize --] = '\0';
-	if (n < 0)
-		*str = '-';
-	ft_int_to_str(str + isize, j);
-	return (str);
+	ptr[isize + imin] = '\0';
+	if (imin == 1)
+		ptr[0] = '-';
+	if (nbr <= 9 && imin == 0)
+		ptr[0] = nbr + '0';
+	else
+		ft_int_to_str(ptr, isize + imin - 1, nbr);
+	return (ptr);
 }
+/*
+int	main(void)
+{
+	int	i = 928795221;
+	printf("int : %s\n", ft_itoa(i));
+	return (0);
+}
+*/

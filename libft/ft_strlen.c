@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:33:07 by paul              #+#    #+#             */
-/*   Updated: 2023/10/12 13:06:30 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/13 14:17:35 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i ++;
 	return (i);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
+#    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/12 16:59:37 by paul             ###   ########.fr        #
+#    Updated: 2023/10/13 15:55:33 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 #flags du compilateur
 CFLAGS = -Wall -Wextra -Werror -std=c99
 #name du fichier / dossier retourner
-NAME = Libft.a
+NAME = libft.a
 #source : nom des fichiers
 SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memccpy.c \
@@ -37,9 +37,12 @@ OBJ = ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
 	ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o
 
 SRC_bonus = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c
+			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+			ft_lstmap.c
+
 OBJ_bonus = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
-			ft_lstadd_back.o
+			ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o \
+			ft_lstmap.o
 
 #cette ligne dit comment génerer le fichier name avec les objets
 #c'est une fonction.
@@ -68,4 +71,4 @@ gen_obj_bonus :
 	$(CC) $(CFLAGS) -c $(SRC_bonus)
 
 #Ligne pour éviter que ces fonctions puissent être considéré comme fichier
-.PHONY: clean fclean all
+.PHONY: clean fclean all re bonus

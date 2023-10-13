@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 09:24:22 by paul              #+#    #+#             */
-/*   Updated: 2023/10/13 14:14:01 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/13 11:28:05 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/13 11:28:08 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+	t_list	*ptr;
+
+	ptr = lst;
+	while (ptr)
+	{
+		f(ptr->content);
+		ptr = ptr->next;
+	}
 }
