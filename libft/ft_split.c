@@ -6,11 +6,12 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:50:25 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/13 18:15:58 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/16 10:58:49 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static const char	*ft_skipchr(const char *s1, char c)
 {
@@ -51,6 +52,15 @@ static int	ft_strsize(char const *s1, char c)
 	return (i);
 }
 
+static char	**ft_str_error(int i, char **array)
+{
+	i --;
+	while (i >= 0)
+		free(array[i--]);
+	free(array);
+	return (NULL);
+}
+
 char	**ft_split(char const *s1, char c)
 {
 	int		i;
@@ -69,7 +79,7 @@ char	**ft_split(char const *s1, char c)
 	{
 		array[i] = (char *) malloc(ft_strsize(s1, c) + 1);
 		if (!array[i])
-			return (NULL);
+			return (ft_str_error(i, array));
 		array[i][ft_strsize(s1, c)] = '\0';
 		j = 0;
 		while (*s1 != '\0' && *s1 != c)
@@ -79,3 +89,9 @@ char	**ft_split(char const *s1, char c)
 	}
 	return (array);
 }
+/*
+int	main(void)
+{
+	ft_split("hello!", ' ');
+	return (0);
+}*/
