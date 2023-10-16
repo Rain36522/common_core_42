@@ -6,12 +6,11 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:50:25 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/16 10:58:49 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/16 12:42:43 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static const char	*ft_skipchr(const char *s1, char c)
 {

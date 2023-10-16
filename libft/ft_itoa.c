@@ -6,12 +6,11 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:50:51 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/13 17:10:41 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/16 12:42:16 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_size_char(long i)
 {

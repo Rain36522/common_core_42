@@ -6,16 +6,27 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:29:04 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/13 15:46:03 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/16 12:42:26 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static t_list	*ft_malloc_empty(t_list *lst, void (*del) (void *))
+t_list	*ft_lstcreate(t_list *lst, void *(*f)(void *))
 {
-	ft_lstclear(&lst, del);
+	t_list	*ptr;
+
+	ptr = (t_list *) malloc(sizeof(t_list));
+	if (!ptr)
+		return (NULL);
+	ptr->content = f(lst->content);
+	return (ptr);
+}
+
+static t_list	*ft_malloc_empty(t_list **lst, void (*del) (void *))
+{
+	if (lst)
+		ft_lstclear(lst, del);
 	return (NULL);
 }
 
@@ -28,20 +39,22 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del) (void *))
 
 	if (!lst || !f || !del)
 		return (NULL);
-	new_lst = ft_lstnew(f(lst->content));
+	new_lst = ft_lstcreate(lst, f);
 	if (!new_lst)
-		return (ft_malloc_empty(new_lst, del));
+		return (NULL);
 	old_lst = lst->next;
 	ptr = new_lst;
 	while (old_lst)
 	{
-		tmp = ft_lstnew(f(old_lst->content));
+		ptr->next = 0;
+		tmp = ft_lstcreate(old_lst, f);
 		if (!tmp)
-			return (ft_malloc_empty(new_lst, del));
+			return (ft_malloc_empty(&new_lst, del));
 		ptr->next = tmp;
 		ptr = ptr->next;
 		old_lst = old_lst->next;
 	}
+	ptr->next = NULL;
 	return (new_lst);
 }
 /*
@@ -53,7 +66,6 @@ void	*f(void *chr)
 {
 
 	chr ++;
-	chr --;
 	return (chr);
 }
 
@@ -83,8 +95,9 @@ int	main(void)
 	lst = ptr;
 	while (i < 5)
 	{
-		*c += 1;
+		c[0] ++;
 		ptr->next = ft_lstnew(c);
+		printf("char : %s\n", c);
 		ptr = ptr->next;
 		i ++;	
 	}
