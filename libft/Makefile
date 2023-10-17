@@ -6,7 +6,7 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/13 15:55:33 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/17 13:57:36 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c99
 NAME = libft.a
 #source : nom des fichiers
 SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
-	ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memccpy.c \
+	ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
 	ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
 	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c \
 	ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
@@ -29,7 +29,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 #Reprise des noms du fichier et remplacement du .c en .o
 #OBJ = $(SRC:.c=.o)
 OBJ = ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
-	ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memccpy.o \
+	ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o \
 	ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o \
 	ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o \
 	ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o \
