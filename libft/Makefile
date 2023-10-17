@@ -6,14 +6,14 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/17 13:57:36 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/17 14:01:21 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #compilateur
 CC = gcc
 #flags du compilateur
-CFLAGS = -Wall -Wextra -Werror -std=c99
+CFLAGS = -Wall -Wextra -Werror
 #name du fichier / dossier retourner
 NAME = libft.a
 #source : nom des fichiers
