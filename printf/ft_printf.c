@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:36:58 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/17 17:00:35 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/18 09:21:56 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(void)
 	int		i;
 	int		j;
 
-	i = ft_printf("p : %p\n", "");
-	j = printf("p : %p\n", "");
+	i = ft_printf("%i", -10);
+	j = printf("%i", -10);
 	printf("my : %i, original %i\n", i, j );
 	return (0);
 }

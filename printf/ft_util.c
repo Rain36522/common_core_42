@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:17:11 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/17 17:03:43 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/18 08:59:57 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ char	*ft_print_str(char *s)
 	return (s);
 }
 
-static int	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	if (!(ft_isprint(c) || (c >= 9 && c <= 13)))
-		return (0);
 	write(1, &c, 1);
 	return (1);
 }

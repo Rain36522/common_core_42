@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:33:44 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/17 16:39:56 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/18 08:57:25 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		ft_putstrprct(char *s);
 int		ft_putunsigned(unsigned int n);
 int		ft_printf(const char *str, ...);
 int		ft_putnbr_int(int n);
+int		ft_putchar(char c);
 
 #endif

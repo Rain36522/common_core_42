@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:44:10 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/17 15:36:00 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/18 09:23:17 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	ft_putunsigned(unsigned int n)
 {
 	int	i;
 
-	if (!n)
-		return (0);
+	if (n == 0)
+		return (ft_putchar('0'));
 	i = 0;
 	ft_putunsign_int(n);
 	while (n > 0)
@@ -42,16 +42,23 @@ int	ft_putunsigned(unsigned int n)
 
 int	ft_putnbr_int(int n)
 {
-	int	i;
+	int		i;
+	long	nbr;
 
-	if (!n)
-		return (0);
+	nbr = n;
+	if (n == 0)
+		return (ft_putchar('0'));
 	i = 0;
 	ft_putnbr_fd(n, 1);
-	while (n > 0)
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		i ++;
+	}
+	while (nbr > 0)
 	{
 		i ++;
-		n /= 10;
+		nbr /= 10;
 	}
 	return (i);
 }
