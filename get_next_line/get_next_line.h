@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 09:24:22 by paul              #+#    #+#             */
-/*   Updated: 2023/10/18 13:16:21 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/18 10:12:05 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/18 13:54:57 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_isalnum(int c)
-{
-	unsigned char	chr;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 512
+# endif
 
-	chr = (unsigned char)c;
-	if ((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z'))
-		return (c);
-	else if (chr >= '0' && chr <= '9')
-		return (c);
-	return (0);
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+
+#endif
