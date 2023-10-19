@@ -6,13 +6,13 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:29:04 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/16 12:42:26 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/19 08:55:12 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstcreate(t_list *lst, void *(*f)(void *))
+static t_list	*ft_lstcreate(t_list *lst, void *(*f)(void *))
 {
 	t_list	*ptr;
 
