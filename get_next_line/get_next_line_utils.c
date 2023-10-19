@@ -5,108 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 10:11:43 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/18 15:02:36 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/19 14:22:12 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/19 17:22:16 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen_endl(char *s)
+char	*ft_strcat(char *s1, char *s2, int is2)
+{
+	int		i;
+	int		is1;
+	char	*ptr;
+
+	is1 = 0;
+	i = 0;
+	while (s1[is1])
+		is1 ++;
+	ptr = (char *) ft_calloc(is1 + is2 + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ptr[is1 + is2] = '\0';
+	while (i < is1)
+	{
+		ptr[i] = s1[i];
+		i ++;
+	}
+	while (i < is1 + is2)
+	{
+		ptr[i] = s2[i - is1];
+		i ++;
+	}
+	free (s1);
+	return (ptr);
+}
+
+char	*ft_get_ptr_line(char *ptr, char *file, int fd)
 {
 	int	i;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] && s[i] != '\n')
-		i ++;
-	return (i);
-}
-
-int	ft_strchr(char *ptr)
-{
-	char	c;
-
-	c = '\0';
+	i = BUFFER_SIZE;
 	if (!ptr)
-		return (0);
-	while (*ptr)
 	{
-		if (*ptr == (char)c)
-			return (1);
-		ptr ++;
+		ptr = (char *) ft_calloc(1, sizeof(char));
+		ptr[0] = '\0';
 	}
-	return (0);
+	while (i >= BUFFER_SIZE && !ft_strchr(file))
+	{
+		i = read(fd, file, BUFFER_SIZE);
+		if (i > 0)
+			ptr = ft_strcat(ptr, file, i);
+		if (!ptr)
+			return (NULL);
+		else if (!*ptr || i < 0)
+		{
+			free(ptr);
+			return (NULL);
+		}
+	}
+	return (ptr);
 }
 
-char	*ft_strcat(char *s1, char *s2)
-{
-	int		isize;
-	char	*str;
-	int		i;
-
-	i = 0;
-	isize = ft_strlen_endl(s1) + ft_strlen_endl(s2) + 1;
-	str = (char *) malloc(sizeof(char) * (isize + 1));
-	if (!str)
-		return (NULL);
-	str[isize] = '\0';
-	while (i < ft_strlen_endl(s1))
-	{
-		str[i] = s1[i];
-		i ++;
-	}
-	while (s2[i - ft_strlen_endl(s1)] && str[i - ft_strlen_endl(s1)] != '\n')
-	{
-		str[i] = s2[i - ft_strlen_endl(s1)];
-		i ++;
-	}
-	return (str);
-}
-
-char	*ft_remove_line(char *str)
-{
-	char	*s;
-	int		isize;
-	int		line_sz;
-
-	isize = 0;
-	line_sz = ft_strlen_endl(str) + 1;
-	while (str[isize])
-		isize ++;
-	isize = isize - line_sz + 1;
-	s = (char *) malloc(sizeof(char) * (isize + 1));
-	if (!s)
-		return (NULL);
-	s[isize] = '\0';
-	isize = 0;
-	while (str[line_sz + isize])
-	{
-		s[isize] = str[isize + line_sz];
-		isize ++;
-	}
-	free(str);
-	return (s);
-}
-
-char	*ft_give_line(char *s)
+char	*ft_give_line(char *str)
 {
 	int		isize;
 	int		i;
-	char	*line;
+	char	*dup;
 
-	i = 0;
-	isize = ft_strlen_endl(s) + 1 + ft_strchr(s);
-	line = (char *) malloc(sizeof(char) * (isize + 1));
-	if (!line)
+	isize = 0;
+	while (str[isize] && str[isize] != '\n')
+		isize ++;
+	if (str[isize] == '\n')
+		isize ++;
+	dup = (char *) ft_calloc(isize + 1, sizeof(char));
+	if (! dup)
 		return (NULL);
-	line[isize] = '\0';
+	dup[isize] = '\0';
+	i = 0;
 	while (i < isize)
 	{
-		line[i] = s[i];
+		dup[i] = str[i];
 		i ++;
 	}
-	//printf("before : %s\nafter : %s\n", s, line);
-	return (line);
+	return (dup);
+}
+
+char	*ft_remove_line(char *s)
+{
+	char	*ptr;
+	char	*mem_s;
+
+	mem_s = s;
+	while (*s && *s != '\n')
+		s ++;
+	if (!*s)
+		return (NULL);
+	if (*s == '\n')
+		s ++;
+	ptr = ft_strdup(s);
+	free(mem_s);
+	return (ptr);
 }
