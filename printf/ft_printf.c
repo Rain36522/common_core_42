@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:36:58 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/18 09:21:56 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/26 11:10:44 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 
 int	ft_printf(const char *str, ...)
 {
-	int		i;
 	int		j;
 	int		isize;
 	char	*s;
 	va_list	va_lst;
 
 	s = (char *)str;
-	i = ft_cntarg(s);
 	isize = 0;
 	va_start(va_lst, str);
 	j = ft_putstrprct(s);
@@ -36,6 +34,7 @@ int	ft_printf(const char *str, ...)
 		isize += j;
 			s += j;
 	}
+	va_end(va_lst);
 	return (isize);
 }
 /*
