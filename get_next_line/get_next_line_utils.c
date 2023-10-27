@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:22:12 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/19 17:22:16 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/23 09:13:45 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ char	*ft_remove_line(char *s)
 	while (*s && *s != '\n')
 		s ++;
 	if (!*s)
+	{
+		free(mem_s);
 		return (NULL);
+	}
 	if (*s == '\n')
 		s ++;
 	ptr = ft_strdup(s);

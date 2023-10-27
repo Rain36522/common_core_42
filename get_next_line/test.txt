@@ -1,1 +1,3 @@
-C
+C'est quelque chose de très courant. Mon testeur deviendra plus lent pour chaque malloc que vous effectuez, donc si vous effectuez beaucoup de mallocs, il expirera probablement.
+
+S'il expire en mode strict, ne vous inquiétez pas, celui-ci est très très inefficace. J'ai l'intention de changer certaines choses pour ne pas rendre les choses si horribles, mais pour le moment, ne vous inquiétez pas si cela donne un délai d'attente.

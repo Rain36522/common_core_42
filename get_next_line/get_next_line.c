@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:01:18 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/19 17:14:17 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/23 13:52:33 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*get_next_line(int fd)
 		free(ptr);
 	return (line);
 }
-/*
+
 int	main(void)
 {
 	int		fd;
@@ -94,11 +94,10 @@ int	main(void)
 	printf("\\                                              /\n");
 	printf("|=================================TEST=========|\n");
 	printf("/----------------------------------------------\\\n");
-	while(i ++ <= 2)
+	while(i ++ <= 5)
 	{
 		line = get_next_line(fd);
 		printf("%i. line : %s\n", i, line);
 		printf("-----------------------------------------\n");
 	}
 }
-*/

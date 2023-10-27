@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:12:05 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/19 17:12:13 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/23 13:54:06 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 1
 # endif
 
 # include <stdlib.h>
