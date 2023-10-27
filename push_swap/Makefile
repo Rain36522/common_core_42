@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
+#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 09:01:54 by pudry             #+#    #+#              #
-#    Updated: 2023/10/27 17:50:45 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/27 19:40:51 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pushswap.aout
-CC = GCC
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 BLUE = \\033[1;34m
@@ -26,8 +26,8 @@ ft_utils2.c ft_algorithm.c ft_treat_input2.c
 
 all : header
 	@make -C libft/
-	@$(CC) $(FLAGS) $(SRC) $(LIBFT) -o $(NAME)
-	@./$(NAME) 1664 1664 1157 1824 1812
+	$(CC) $(FLAGS) $(SRC) $(LIBFT) -o $(NAME)
+	./$(NAME) 164 1664 1157 1824 1812
 
 fclean :
 	rm -f $(NAME)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorithm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:03:19 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:14:24 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/27 19:35:37 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd)
 {
 	t_stack	*ptr;
-	int	i;
 
-	i = 0;
 	ptr = ft_get_stack(start, cmd);
 	if (ft_check_sort(ptr) == 1)
 		return (start);

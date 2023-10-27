@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
+#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/17 14:01:21 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/27 19:40:02 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,28 +47,28 @@ OBJ_bonus = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
 #cette ligne dit comment génerer le fichier name avec les objets
 #c'est une fonction.
 $(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 #fonction pour générer le fichier Libft.a
 all : gen_obj $(NAME)
 
 bonus : $(OBJ_bonus)
-	ar rcs $(NAME) $(OBJ_bonus)
+	@ar rcs $(NAME) $(OBJ_bonus)
 
 #fonction nettoyage fichier objet
 clean :
-	rm -f $(OBJ) $(OBJ_bonus)
+	@rm -f $(OBJ) $(OBJ_bonus)
 #nettoyage fichier objet + delete libft.a
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 #delete all file et compile again
 re : fclean all
 
 gen_obj :
-	$(CC) $(CFLAGS) -c $(SRC)
+	@$(CC) $(CFLAGS) -c $(SRC)
 
 gen_obj_bonus :
-	$(CC) $(CFLAGS) -c $(SRC_bonus)
+	@$(CC) $(CFLAGS) -c $(SRC_bonus)
 
 #Ligne pour éviter que ces fonctions puissent être considéré comme fichier
 .PHONY: clean fclean all re bonus

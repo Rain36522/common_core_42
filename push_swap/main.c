@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:18 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:40:55 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/27 19:43:32 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int nArg, char **Args)
 	//ft_put_stacks(start);
 	//ft_mvstacks(start);
 	//start = ft_solve_3(start, 0);
-	start = ft_solve_5(start);
-	//ft_put_stacks(start);
+	//start = ft_solve_5(start);
+	ft_put_stacks(start);
 	return (0);
 }

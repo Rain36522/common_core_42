@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_input2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:33:26 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 18:10:09 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/27 19:52:46 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,18 @@ static t_stack	*ft_duplicate_stack(int	isize)
 		return (NULL);
 	mem_ptr = ptr;
 	ptr->nbr = 0;
-	ptr->next ptr;
+	ptr->next = NULL;
 	while (isize > 1)
 	{
+		printf("isize : %i\n", isize);
 		ptr = ft_new_lst_back(0, ptr);
+		printf("add back\n");
 		if (!ptr)
 			return (NULL);
-		ptr = ptr->next;
 		isize  --;
 	}
-	
+	printf("fini\n");
+	return (mem_ptr);
 }
 
 static void	ft_put_value_pos(int pos, int nbr, t_stack *ptr)
@@ -44,6 +46,21 @@ static void	ft_put_value_pos(int pos, int nbr, t_stack *ptr)
 	ptr->nbr = nbr;
 }
 
+
+static void	ft_stack_clear(t_stack *start)
+{
+	t_stack	*ptr;
+
+	ptr = start;
+
+	while (start)
+	{
+		ptr = start;
+		start = start->next;
+		free(ptr);
+	}
+}
+
 t_stack	*ft_simplify_stack(t_stack *ptr1)
 {
 	t_stack	*ptr2;
@@ -51,10 +68,12 @@ t_stack	*ft_simplify_stack(t_stack *ptr1)
 	int		j;
 	int		isize;
 
+	printf("68\n");
 	if (!ptr1)
 		return (NULL);
 	isize = ft_cnt_stack(ptr1);
 	ptr2 = ft_duplicate_stack(isize);
+	printf("73 dup\n");
 	i = ft_give_biger_pos(ptr1);
 	ft_put_value_pos(i, 2147483647, ptr1);
 	ft_put_value_pos(i, isize, ptr2);
@@ -67,7 +86,9 @@ t_stack	*ft_simplify_stack(t_stack *ptr1)
 		ft_put_value_pos(i, j ++, ptr2);
 		isize --;
 	}
-	ft_lst_clear(ptr1);
+	printf("86 clearing\n");
+	ft_stack_clear(ptr1);
+	printf("88. cleared\n");
 	return (ptr2);
 }
 
