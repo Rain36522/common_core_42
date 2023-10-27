@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:22:25 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:52:00 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/27 18:13:02 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_lst_pos	* ft_full_stack_a(int nArg, char **Args)
 			return (ft_lst_clear(start));
 		i ++;
 	}
-	ft_simplify_stack(start->strt_a);
+	start->strt_a = ft_simplify_stack(start->strt_a);
 	return (start);
 }
 

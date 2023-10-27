@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:44:26 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:38:58 by pudry            ###   ########.fr       */
+/*   Updated: 2023/10/27 18:13:18 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_lst_pos	*ft_lst_clear(t_lst_pos *start);
 t_lst_pos	*check_input(int nArg, char **Args);
 int			ft_check_double_value(int nArg, char **Args);
 void		ft_put_stacks(t_lst_pos *start);
+t_stack	*	ft_simplify_stack(t_stack *ptr1);
 t_lst_pos	*ft_rr(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_p(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_r(t_lst_pos *start, int cmd);
