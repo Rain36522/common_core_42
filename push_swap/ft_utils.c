@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 15:06:32 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:45:12 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/29 10:56:20 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 10:56:20 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int	ft_cnt_stack(t_stack *ptr)
 	}
 	return (i);
 }
+
 int	ft_check_sort(t_stack *stck)
 {
 	if (!stck)
 		return (0);
-	else if(!stck->next)
-		return(1);
+	else if (!stck->next)
+		return (1);
 	while (stck->next)
 	{
 		if (stck->nbr > stck->next->nbr)

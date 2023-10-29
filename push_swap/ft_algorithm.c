@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorithm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 15:03:19 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 19:35:37 by paul             ###   ########.fr       */
+/*   Created: 2023/10/29 11:32:52 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 11:40:06 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd)
 		return (start);
 	else if (ft_give_smaller_pos(ptr) == 3)
 	{
-			if (ptr->nbr > ptr->next->nbr)
-				start = ft_s(start, cmd);;
-			ptr = ft_get_stack(start, cmd);
-			start = ft_rr(start, cmd);
-			return (start);
+		if (ptr->nbr > ptr->next->nbr)
+			start = ft_s(start, cmd);
+		ptr = ft_get_stack(start, cmd);
+		start = ft_rr(start, cmd);
+		return (start);
 	}
 	while (ft_check_sort(ptr) == 0)
 	{
@@ -46,5 +46,15 @@ t_lst_pos	*ft_solve_5(t_lst_pos *start)
 	ft_p(start, 0);
 	ft_r(start, 0);
 	ft_p(start, 0);
+	return (start);
+}
+
+t_lst_pos	*ft_solve_100(t_lst_pos *start)
+{
+	while (ft_cnt_stack(start->strt_a) > 3)
+		ft_change_min(start);
+	ft_solve_3(start, 0);
+	while (start->strt_b)
+		ft_p(start, 0);
 	return (start);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:51:47 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 17:06:54 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/29 10:57:06 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 10:57:26 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_lst_pos	*ft_change_min(t_lst_pos *start)
 	}
 	return (start);
 }
+
 t_lst_pos	*ft_change_max(t_lst_pos *start)
 {
 	if (ft_give_biger_pos(start->strt_a) <= ft_cnt_stack(start->strt_a) / 2)

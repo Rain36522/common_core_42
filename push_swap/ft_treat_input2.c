@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_input2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 17:33:26 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 19:52:46 by paul             ###   ########.fr       */
+/*   Created: 2023/10/29 10:44:09 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 10:44:09 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static t_stack	*ft_duplicate_stack(int	isize)
+static t_stack	*ft_duplicate_stack(int isize)
 {
 	t_stack	*ptr;
 	t_stack	*mem_ptr;
@@ -25,20 +25,17 @@ static t_stack	*ft_duplicate_stack(int	isize)
 	ptr->next = NULL;
 	while (isize > 1)
 	{
-		printf("isize : %i\n", isize);
 		ptr = ft_new_lst_back(0, ptr);
-		printf("add back\n");
 		if (!ptr)
 			return (NULL);
-		isize  --;
+		isize --;
 	}
-	printf("fini\n");
 	return (mem_ptr);
 }
 
 static void	ft_put_value_pos(int pos, int nbr, t_stack *ptr)
 {
-	while (pos > 0)
+	while (pos > 1)
 	{
 		pos --;
 		ptr = ptr->next;
@@ -46,13 +43,11 @@ static void	ft_put_value_pos(int pos, int nbr, t_stack *ptr)
 	ptr->nbr = nbr;
 }
 
-
 static void	ft_stack_clear(t_stack *start)
 {
 	t_stack	*ptr;
 
 	ptr = start;
-
 	while (start)
 	{
 		ptr = start;
@@ -68,27 +63,22 @@ t_stack	*ft_simplify_stack(t_stack *ptr1)
 	int		j;
 	int		isize;
 
-	printf("68\n");
 	if (!ptr1)
 		return (NULL);
 	isize = ft_cnt_stack(ptr1);
 	ptr2 = ft_duplicate_stack(isize);
-	printf("73 dup\n");
 	i = ft_give_biger_pos(ptr1);
+	isize --;
 	ft_put_value_pos(i, 2147483647, ptr1);
 	ft_put_value_pos(i, isize, ptr2);
-	isize --;
 	j = 0;
-	while (isize > 0)
+	while (isize > j)
 	{
 		i = ft_give_smaller_pos(ptr1);
 		ft_put_value_pos(i, 2147483647, ptr1);
 		ft_put_value_pos(i, j ++, ptr2);
-		isize --;
 	}
-	printf("86 clearing\n");
 	ft_stack_clear(ptr1);
-	printf("88. cleared\n");
 	return (ptr2);
 }
 

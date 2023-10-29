@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Makefile                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 18:12:18 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 19:43:32 by paul             ###   ########.fr       */
+/*   Created: 2023/10/29 12:19:22 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 12:19:22 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,11 @@ int	main(int nArg, char **Args)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	//ft_put_stacks(start);
 	//ft_mvstacks(start);
+	//ft_put_stacks(start);
 	//start = ft_solve_3(start, 0);
 	//start = ft_solve_5(start);
-	ft_put_stacks(start);
+	start = ft_solve_100(start);
+	//ft_put_stacks(start);
 	return (0);
 }

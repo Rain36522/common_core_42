@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 14:22:58 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 16:44:22 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/29 10:57:58 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 10:57:58 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_lst_pos	*ft_first_to_last(t_lst_pos *start, int cmd)
 	last->next = ptr;
 	return (start);
 }
+
 //cmd 1 -> pit top a to top b
 t_lst_pos	*ft_p(t_lst_pos *start, int cmd)
 {

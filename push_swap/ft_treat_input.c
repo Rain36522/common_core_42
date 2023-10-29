@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:22:25 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 18:13:02 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/29 11:00:17 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 12:05:01 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_lst_pos	*ft_init_start_ptr(void)
 	return (start);
 }
 
-static t_lst_pos	* ft_full_stack_a(int nArg, char **Args)
+static t_lst_pos	*ft_full_stack_a(int nArg, char **Args)
 {
 	t_lst_pos	*start;
 	int			i;
@@ -68,7 +68,8 @@ static t_lst_pos	* ft_full_stack_a(int nArg, char **Args)
 			return (ft_lst_clear(start));
 		i ++;
 	}
-	start->strt_a = ft_simplify_stack(start->strt_a);
+	if (ft_cnt_stack(start->strt_a) > 5)
+		start->strt_a = ft_simplify_stack(start->strt_a);
 	return (start);
 }
 
@@ -104,7 +105,7 @@ void	ft_put_stacks(t_lst_pos *start)
 	pos_a = start->strt_a;
 	pos_b = start->strt_b;
 	printf("--------A--------  -------B---------\n");
-	while(pos_a || pos_b)
+	while (pos_a || pos_b)
 	{
 		if (pos_a)
 		{
@@ -121,4 +122,3 @@ void	ft_put_stacks(t_lst_pos *start)
 		printf("\n");
 	}
 }
-

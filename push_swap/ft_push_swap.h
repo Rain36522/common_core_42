@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 11:44:26 by pudry             #+#    #+#             */
-/*   Updated: 2023/10/27 18:13:18 by pudry            ###   ########.fr       */
+/*   Created: 2023/10/29 11:32:13 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/29 11:32:13 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ t_lst_pos	*ft_change_max(t_lst_pos *start);
 t_stack		*ft_get_stack(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_5(t_lst_pos *start);
-
+t_lst_pos	*ft_solve_100(t_lst_pos *start);
 
 #endif
