@@ -25,21 +25,6 @@ int	ft_cnt_stack(t_stack *ptr)
 	return (i);
 }
 
-int	ft_check_sort(t_stack *stck)
-{
-	if (!stck)
-		return (0);
-	else if (!stck->next)
-		return (1);
-	while (stck->next)
-	{
-		if (stck->nbr > stck->next->nbr)
-			return (0);
-		stck = stck->next;
-	}
-	return (1);
-}
-
 int	ft_give_smaller_pos(t_stack *stck)
 {
 	int	i;

@@ -54,6 +54,7 @@ static void	ft_stack_clear(t_stack *start)
 		start = start->next;
 		free(ptr);
 	}
+	free (start);
 }
 
 t_stack	*ft_simplify_stack(t_stack *ptr1)

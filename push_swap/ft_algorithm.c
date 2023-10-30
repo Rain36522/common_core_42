@@ -40,64 +40,44 @@ t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd)
 
 t_lst_pos	*ft_solve_5(t_lst_pos *start)
 {
-	start = ft_change_min(start);
-	start = ft_change_max(start, 0);
-	start = ft_solve_3(start, 0);
-	ft_p(start, 0);
-	ft_r(start, 0);
-	ft_p(start, 0);
-	return (start);
-}
-/*
-t_lst_pos	*ft_solve_100(t_lst_pos *start)
-{
-	int	i;
 	int	isize;
 
 	isize = ft_cnt_stack(start->strt_a);
-	i = 0;
-	while (ft_check_sort(start->strt_a))
+	start = ft_change_min(start);
+	if (isize == 5)
+		start = ft_change_max(start, 1);
+	start = ft_solve_3(start, 0);
+	if (isize == 5)
 	{
-		while (i < 20)
-		{
-			start = ft_p(start, 0);
-			i ++;
-		}
-		while (start->strt_b)
-		{
-			start = ft_change_max(start, 1);
-			if (ft_give_biger_pos(start->strt_b) < ft_cnt_stack(start->strt_b) / 2)
-				start = ft_r(start, 2);
-			else
-				start = ft_r(start, 0)
-		}
+		ft_p(start, 0);
+		ft_r(start, 0);
 	}
-}*/
+	ft_p(start, 0);
+	return (start);
+}
 
 t_lst_pos	*ft_radix(t_lst_pos *start)
 {
-	unsigned int	ibit;
+	unsigned long	ibit;
 	int				isize;
 
 	ibit = 1;
-	while (ibit < 2147483648 || !ft_check_sort(start->strt_a))
+	while ((!ft_check_sort(start->strt_a) || start->strt_b))
 	{
-		if (ft_check_bit(start->strt_a, ibit) != 2)
-		{
-			ibit *= 2;
-		}
 		isize = ft_cnt_stack(start->strt_a);
-		while (isize > 0)
+		while (isize > 0 && start->strt_a)
 		{
-			if (start->strt_a->nbr / ibit %2 == 1)
+			if (start->strt_a->nbr / ibit % 2 == 1)
 				start = ft_r(start, 0);
 			else
 				start = ft_p(start, 1);
 			isize --;
 		}
 		ibit *= 2;
-		while (start->strt_b)
-			start = ft_p(start, 0);
+		start = ft_return_b(start, ibit);
+		if (ft_check_bit(start->strt_a, ibit) != 2 && \
+		ft_check_bit(start->strt_a, ibit) == ft_check_bit(start->strt_b, ibit))
+			ibit *= 2;
 	}
 	return (start);
 }

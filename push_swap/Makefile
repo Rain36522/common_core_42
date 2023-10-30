@@ -6,11 +6,11 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 09:01:54 by pudry             #+#    #+#              #
-#    Updated: 2023/10/30 09:43:38 by pudry            ###   ########.fr        #
+#    Updated: 2023/10/30 16:55:49 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap.aout
+NAME = pushswap
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
@@ -21,9 +21,9 @@ RED = \\033[1;31m
 GREEN = \\033[1;32m
 BRWN = \\033[0; 33m
 
-INPUT = 2 4 6
-
-SRC = ft_algorithm.c ft_lst.c ft_lst2.c ft_lst3.c ft_treat_input.c ft_treat_input2.c ft_utils.c ft_utils2.c main.c
+INPUT = 811422851 1298499648 811422850 -1260364739 
+SRC = ft_algorithm.c ft_lst.c ft_lst2.c ft_lst3.c ft_treat_input.c \
+ft_treat_input2.c ft_utils.c ft_utils2.c ft_utils3.c main.c
 
 all : header
 	@make -C libft/
@@ -35,6 +35,15 @@ cnt : header
 	@$(CC) $(FLAGS) $(SRC) $(LIBFT) -o $(NAME)
 	@./$(NAME) $(INPUT) | wc -l
 
+check : header
+	@make -C libft/
+	@$(CC) $(FLAGS) $(SRC) $(LIBFT) -o $(NAME)
+	@./$(NAME) $(INPUT) | ./checker_Mac $(INPUT)
+
+leak : header
+	@make -C libft/
+	@$(CC) $(FLAGS) $(SRC) $(LIBFT) -o $(NAME)
+	@leaks -atExit -- ./$(NAME) $(INPUT)
 fclean :
 	rm -f $(NAME)
 	@make fclean -C libft/
@@ -47,7 +56,7 @@ header :
 	@echo "			 . ---------- ."
 	@echo "		 	 | .--------. |"
 	@echo "			 | | ${BLUE}COMPILE${GREEN}| |       __________       ___"
-	@echo "			 | | ${BLUE}FILE${GREEN}   | |      /__________\\    {~._.~}"  
+	@echo "			 | | ${BLUE}FILE${GREEN}   | |      /__________\\    {~${RED}.${GREEN}_${RED}.${GREEN}~}"  
 	@echo "		.--------|  --------  |------|    --=-- |-----( Y )---."
 	@echo "		|         ----,-.-----       |o ======  |    ()~*~()  | "
 	@echo "		|       ______|_|_______     |__________|    (_)-(_)  | "
@@ -62,4 +71,4 @@ header :
 
 
 
-.PHONY : fclean re all
+.PHONY : fclean re all header clean cnt check leak

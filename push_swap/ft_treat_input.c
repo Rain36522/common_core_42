@@ -12,11 +12,16 @@
 
 #include "ft_push_swap.h"
 
-static int	ft_small_int_max(char *str, int iminus)
+static int	ft_small_int_max(char *str)
 {
 	int	i;
 	int	j;
+	int	iminus;
 
+	iminus = 0;
+	if (str[0] == '-')
+		iminus = 1;
+	str += iminus;
 	j = 0;
 	i = ft_strlen(str);
 	while (j < i)
@@ -27,9 +32,9 @@ static int	ft_small_int_max(char *str, int iminus)
 	}
 	if (i > 10)
 		return (0);
-	if (i == 10 && iminus < 0 && ft_strncmp(str, "2147483648", 10) > 0)
+	if (i == 10 && iminus == 1 && ft_strncmp(str, "2147483648", 10) > 0)
 		return (0);
-	if (i == 10 && iminus >= 0 && ft_strncmp(str, "2147483647", 10) > 0)
+	if (i == 10 && iminus == 0 && ft_strncmp(str, "2147483647", 10) > 0)
 		return (0);
 	return (1);
 }
@@ -42,6 +47,7 @@ static t_lst_pos	*ft_init_start_ptr(void)
 	if (!start)
 		return (NULL);
 	start->strt_b = NULL;
+	start->strt_a = NULL;
 	return (start);
 }
 
@@ -76,27 +82,21 @@ static t_lst_pos	*ft_full_stack_a(int nArg, char **Args)
 t_lst_pos	*check_input(int nArg, char **Args)
 {
 	int			i;
-	int			iminus;
 
 	if (nArg <= 1)
 		return (NULL);
-	i = 2;
+	i = 1;
 	if (ft_check_double_value(nArg, Args) == 1)
 		return (NULL);
 	while (i < nArg)
 	{
-		iminus = 0;
-		if (Args[i][0] == '-')
-		{
-			iminus = -1;
-			++ Args[i];
-		}
-		if (ft_small_int_max(Args[i++], iminus) == 0)
+		if (ft_small_int_max(Args[i++]) == 0)
 			return (NULL);
 	}
 	return (ft_full_stack_a(nArg, Args));
 }
 
+/*
 void	ft_put_stacks(t_lst_pos *start)
 {
 	t_stack	*pos_a;
@@ -121,4 +121,4 @@ void	ft_put_stacks(t_lst_pos *start)
 		}
 		printf("\n");
 	}
-}
+}*/

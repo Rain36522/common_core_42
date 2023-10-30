@@ -12,6 +12,7 @@
 
 #include "ft_push_swap.h"
 
+/*
 int	ft_mvstacks(t_lst_pos *start)
 {
 	char	s[] = "salut";
@@ -64,11 +65,12 @@ int	ft_mvstacks(t_lst_pos *start)
 	}
 	ft_lst_clear(start);
 	return (0);
-}
+}*/
 
 int	main(int nArg, char **Args)
 {
 	t_lst_pos	*start;
+	int			isize;
 
 	start = check_input(nArg, Args);
 	if (!start)
@@ -76,29 +78,16 @@ int	main(int nArg, char **Args)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	start = ft_radix(start);
+	isize = ft_cnt_stack(start->strt_a);
+	if (ft_check_sort(start->strt_a))
+		return (0);
+	else if (isize == 2)
+		start = ft_s(start, 0);
+	else if (isize == 3)
+		start = ft_solve_3(start, 0);
+	else if (isize <= 5)
+		start = ft_solve_5(start);
+	else
+		start = ft_radix(start);
+	ft_lst_clear(start);
 }
-
-/*
-	while (i < 5)
-	{
-		if (!tst)
-		{
-			tst = start->strt_a;
-			i ++;
-			printf("----------------------\n");
-		}
-		tst->nbr >>= i;
-		if (tst->nbr & 1)
-		{
-			tst->nbr <<= i;
-			printf("nbr : %i, bit : 1\n", tst->nbr);
-		}
-		else
-		{
-			tst->nbr <<= i;
-			printf("nbr : %i, bit : 0\n", tst->nbr);
-		}
-		tst = tst->next;
-	}
-	*/

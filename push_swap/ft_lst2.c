@@ -47,7 +47,8 @@ static t_lst_pos	*ft_first_to_last(t_lst_pos *start, int cmd)
 		ptr->next = NULL;
 	}
 	last = ft_lst_last(start, cmd);
-	last->next = ptr;
+	if (last)
+		last->next = ptr;
 	return (start);
 }
 

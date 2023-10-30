@@ -13,3 +13,6 @@ def generate_int(quantity):
             i += 1
 
     print(x)
+
+n = int(input("Entrez nombre a generer : "))
+generate_int(n)
