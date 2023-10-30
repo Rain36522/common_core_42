@@ -44,10 +44,12 @@ int			ft_check_sort(t_stack *stck);
 int			ft_give_smaller_pos(t_stack *stck);
 int			ft_give_biger_pos(t_stack *stck);
 t_lst_pos	*ft_change_min(t_lst_pos *start);
-t_lst_pos	*ft_change_max(t_lst_pos *start);
+t_lst_pos	*ft_change_max(t_lst_pos *start, int cmd);
 t_stack		*ft_get_stack(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_5(t_lst_pos *start);
-t_lst_pos	*ft_solve_100(t_lst_pos *start);
+t_lst_pos	*ft_radix(t_lst_pos *start);
+int			ft_best_biger_pos(t_stack *stck, int from, int to);
+int			ft_check_bit(t_stack *ptr, unsigned int ibit);
 
 #endif

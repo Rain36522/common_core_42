@@ -76,11 +76,29 @@ int	main(int nArg, char **Args)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	//ft_mvstacks(start);
-	//ft_put_stacks(start);
-	//start = ft_solve_3(start, 0);
-	//start = ft_solve_5(start);
-	start = ft_solve_100(start);
-	//ft_put_stacks(start);
-	return (0);
+	start = ft_radix(start);
 }
+
+/*
+	while (i < 5)
+	{
+		if (!tst)
+		{
+			tst = start->strt_a;
+			i ++;
+			printf("----------------------\n");
+		}
+		tst->nbr >>= i;
+		if (tst->nbr & 1)
+		{
+			tst->nbr <<= i;
+			printf("nbr : %i, bit : 1\n", tst->nbr);
+		}
+		else
+		{
+			tst->nbr <<= i;
+			printf("nbr : %i, bit : 0\n", tst->nbr);
+		}
+		tst = tst->next;
+	}
+	*/
