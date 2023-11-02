@@ -22,6 +22,8 @@ static int	ft_small_int_max(char *str)
 	if (str[0] == '-')
 		iminus = 1;
 	str += iminus;
+	if (!*str)
+		return (0);
 	j = 0;
 	i = ft_strlen(str);
 	while (j < i)

@@ -17,9 +17,7 @@ t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd)
 	t_stack	*ptr;
 
 	ptr = ft_get_stack(start, cmd);
-	if (ft_check_sort(ptr) == 1)
-		return (start);
-	else if (ft_give_smaller_pos(ptr) == 3)
+	if (ft_give_smaller_pos(ptr) == 3)
 	{
 		if (ptr->nbr > ptr->next->nbr)
 			start = ft_s(start, cmd);
@@ -27,13 +25,14 @@ t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd)
 		start = ft_rr(start, cmd);
 		return (start);
 	}
-	while (ft_check_sort(ptr) == 0)
+	else if (ft_give_smaller_pos(ptr) == 2 && ptr->nbr > ptr->next->next->nbr)
+		ft_r(start, cmd);
+	else if (ft_give_smaller_pos(ptr) == 2)
+		ft_s(start, cmd);
+	else
 	{
-		if (ft_give_smaller_pos(ptr) == 2)
-			start = ft_s(start, cmd);
-		else
-			start = ft_rr(start, cmd);
-		ptr = ft_get_stack(start, cmd);
+		start = ft_s(start, cmd);
+		start = ft_r(start, cmd);
 	}
 	return (start);
 }
@@ -45,8 +44,9 @@ t_lst_pos	*ft_solve_5(t_lst_pos *start)
 	isize = ft_cnt_stack(start->strt_a);
 	start = ft_change_min(start);
 	if (isize == 5)
-		start = ft_change_max(start, 1);
-	start = ft_solve_3(start, 0);
+		start = ft_change_max(start, 0);
+	if (ft_check_sort(start->strt_a) != 1)
+		start = ft_solve_3(start, 0);
 	if (isize == 5)
 	{
 		ft_p(start, 0);

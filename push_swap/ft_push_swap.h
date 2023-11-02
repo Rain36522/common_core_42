@@ -33,7 +33,6 @@ t_stack		*ft_lst_last(t_lst_pos *start, int i);
 t_lst_pos	*ft_lst_clear(t_lst_pos *start);
 t_lst_pos	*check_input(int nArg, char **Args);
 int			ft_check_double_value(int nArg, char **Args);
-void		ft_put_stacks(t_lst_pos *start);
 t_stack		*ft_simplify_stack(t_stack *ptr1);
 t_lst_pos	*ft_rr(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_p(t_lst_pos *start, int cmd);
@@ -49,8 +48,8 @@ t_stack		*ft_get_stack(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_3(t_lst_pos *start, int cmd);
 t_lst_pos	*ft_solve_5(t_lst_pos *start);
 t_lst_pos	*ft_radix(t_lst_pos *start);
-int			ft_best_biger_pos(t_stack *stck, int from, int to);
 int			ft_check_bit(t_stack *ptr, unsigned long ibit);
 t_lst_pos	*ft_return_b(t_lst_pos *start, unsigned long ibit);
+void		ft_put_stacks(t_lst_pos *start);
 
 #endif

@@ -75,12 +75,16 @@ int	main(int nArg, char **Args)
 	start = check_input(nArg, Args);
 	if (!start)
 	{
-		write(1, "Error\n", 6);
+		if (nArg > 1)
+			write(1, "Error\n", 6);
 		return (0);
 	}
 	isize = ft_cnt_stack(start->strt_a);
 	if (ft_check_sort(start->strt_a))
+	{
+		ft_lst_clear(start);
 		return (0);
+	}
 	else if (isize == 2)
 		start = ft_s(start, 0);
 	else if (isize == 3)
