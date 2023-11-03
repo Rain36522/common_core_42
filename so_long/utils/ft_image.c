@@ -6,28 +6,11 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:36:30 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/02 15:46:27 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 09:23:50 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/ft_so_long.h"
-
-void	ft_put_image(t_data *data, char *path, int i, int j)
-{
-	int		xwidth;
-	int		yheight;
-	int		xpos;
-	int		ypos;
-	void	*img;
-
-	xwidth = 64;
-	yheight = 64;
-	xpos = (i - 1) * xwidth;
-	ypos = (j - 1) * yheight;
-	img = mlx_xpm_file_to_image(data->mlx, path, &xwidth, &yheight);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, xpos, ypos);
-	mlx_destroy_image(data->mlx, img);
-}
 
 static void	ft_put_flag(t_data *data, char *path, int i, int j)
 {
@@ -44,6 +27,15 @@ static void	ft_put_flag(t_data *data, char *path, int i, int j)
 	img = mlx_xpm_file_to_image(data->mlx, path, &xwidth, &yheight);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, img, xpos, ypos);
 	mlx_destroy_image(data->mlx, img);
+}
+
+static void	ft_put_img_by_char2(t_data *data, char c, int i, int j)
+{
+	if (c == 'B')
+	{
+		ft_put_image(data, "./img/back_g.xpm", i, j);
+		ft_put_image(data, "./img/blackhole.xpm", i, j);
+	}
 }
 
 void	ft_put_img_by_char(t_data *data, char c, int i, int j)
@@ -70,6 +62,8 @@ void	ft_put_img_by_char(t_data *data, char c, int i, int j)
 		ft_put_image(data, "./img/moon.xpm", i, j);
 		ft_put_flag(data, "./img/flag.xpm", i, j);
 	}
+	else
+		ft_put_img_by_char2(data, c, i, j);
 }
 
 void	ft_put_object(t_data *data)
@@ -91,6 +85,8 @@ void	ft_put_object(t_data *data)
 				ft_put_image(data, "./img/Asteroid.xpm", i, j);
 			else if (data->map->map[j][i] == 'E')
 				ft_put_image(data, "./img/terre.xpm", i, j);
+			else if (data->map->map[j][i] == 'B')
+				ft_put_image(data, "./img/blackhole.xpm", i, j);
 			i ++;
 		}
 		j ++;

@@ -6,7 +6,7 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 08:09:16 by pudry             #+#    #+#              #
-#    Updated: 2023/11/02 19:19:26 by pudry            ###   ########.fr        #
+#    Updated: 2023/11/03 10:23:03 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,21 +27,18 @@ YELLOW = \\033[0;33m
 RED = \\033[1;31m
 GREEN = \\033[1;32m
 BRWN = \\033[0; 33m
+GREY = \\033[1;30m
 
 #utils/ft_check_map.c utils/ft_stock_map.c
-SRC = test.c utils/ft_check_map.c utils/ft_stock_map.c utils/ft_image.c \
-	utils/ft_check_map2.c utils/ft_utils.c utils/ft_img_player.c \
-	utils/ft_mouve_x.c utils/ft_mouve_y.c utils/ft_image2.c utils/ft_check_map_error.c
+SRC = src/ft_mouve_x.c src/ft_mouve_y.c src/ft_stock_map.c src/main.c
+UTIL = utils/ft_check_map.c utils/ft_check_map2.c utils/ft_check_map_error.c \
+	utils/ft_image.c utils/ft_image2.c utils/ft_img_player.c utils/ft_utils.c
 GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 
 # $(GNL:.c=.o)
-OBJ = $(SRC:.c=.o) $(GNL:.c=.o)
+OBJ = $(SRC:.c=.o) $(GNL:.c=.o) $(UTIL:.c=.o)
 
-all : header lib $(NAME)
-	./$(NAME) ./map/map2.ber
-
-leaks : header lib $(NAME)
-	leaks --atExit -- ./$(NAME)
+all : lib $(NAME) header
 
 .c.o:
 	$(CC) $(FLAGS) -c -o $@ $< $(INCLUDES)
@@ -68,26 +65,29 @@ fclean : clean
 re : fclean all
 
 gen_obj :
-	@$(CC) $(CFLAGS) -c $(SRC) $(GNL)
+	@$(CC) $(CFLAGS) -c $(SRC) $(GNL) $(SRC)
 
 header :
-	@echo "${GREEN}"
-	@echo "		   __________"
-	@echo "		 . ---------- ."
-	@echo "		 | .--------. |"
-	@echo "		 | | ${BLUE}COMPILE${GREEN}| |       __________       ___"
-	@echo "		 | | ${BLUE}FILE${GREEN}   | |      /__________\\    {~${RED}.${GREEN}_${RED}.${GREEN}~}"
-	@echo "	.--------|  --------  |------|    --=-- |-----( Y )---."
-	@echo "	|         ----,-.-----       |o ======  |    ()~*~()  | "
-	@echo "	|       ______|_|_______     |__________|    (_)-(_)  | "
-	@echo "	|      /  %%%%%%%%%%%%  \\                             | "
-	@echo "	|     /  %%%%%%%%%%%%%%  \\                            | "
-	@echo "	|     ^^^^^^^^^^^^^^^^^^^^                            | "
-	@echo "	+-----------------------------------------------------+"
-	@echo "	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ "
-	@echo "${BLUE}"
-	@echo "\n<------------COMPILING OBJECT------------>\n"
-	@echo "${WHITE}"
+	@echo "	      .-~~~-.        ${GREY}||${RED}::::::${BLUE}==========${WHITE}"
+	@echo "	     /= ___  \       ${GREY}||${RED}::::::${WHITE}=========="
+	@echo "	    |- /~~~\  |      ${GREY}||${RED}::::::${BLUE}==========${WHITE}"
+	@echo "	    |=( ^.^ ) |      ${GREY}||${WHITE}================"
+	@echo "	    \__\_=_/__/      ${GREY}||${BLUE}================${WHITE}"
+	@echo "	     {_______}       ${GREY}||${WHITE}================"
+	@echo "	   /  *       ~ --._ ${GREY}||${WHITE}"
+	@echo "	  /= .     [] .     |  >"
+	@echo "	 /  /|ooo     |  --^ ${GREY}||${WHITE}"
+	@echo "	(   )\_______/       ${GREY}||${WHITE}"
+	@echo "	 \..\//       \      ${GREY}||${WHITE}"
+	@echo "	  ^-| ==    \_|      ${GREY}||${WHITE}"
+	@echo "	    /         |      ${GREY}||${WHITE}"
+	@echo "	   |=   >\  __/      ${GREY}||${WHITE}"
+	@echo "	   \   \ |- --|      ${GREY}||${WHITE}"
+	@echo "	    \ __| \___/      ${GREY}||${WHITE}"
+	@echo "	     [__] _[__]      ${GREY}||${WHITE}"
+	@echo "	   (    )(    )      ${GREY}||${WHITE}"
+	@echo "	^^~ ^^^^^  ^^^^  ~^^^~^^~~~^^^~^^^~^^^~^^~^"
+
 
 
 

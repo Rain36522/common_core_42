@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:44:26 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/02 15:45:02 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 09:21:40 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,21 @@ void	ft_set_player(t_data *data)
 		}
 	j ++;
 	}
+}
+
+void	ft_put_image(t_data *data, char *path, int i, int j)
+{
+	int		xwidth;
+	int		yheight;
+	int		xpos;
+	int		ypos;
+	void	*img;
+
+	xwidth = 64;
+	yheight = 64;
+	xpos = (i - 1) * xwidth;
+	ypos = (j - 1) * yheight;
+	img = mlx_xpm_file_to_image(data->mlx, path, &xwidth, &yheight);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, img, xpos, ypos);
+	mlx_destroy_image(data->mlx, img);
 }

@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:50:31 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/02 15:35:44 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 10:24:23 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_count_line(char *path)
 		line = get_next_line(fd);
 	}
 	if (i < 3)
-		printf("Error\nLa map est trop petite");
+		ft_printf("Error\nLa map est trop petite");
 	return (i);
 }
 

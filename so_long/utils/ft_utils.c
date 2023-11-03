@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 16:36:38 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/02 19:18:26 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 09:31:39 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ int	ft_quit(t_data *data, int j, int icnt)
 	if (j == 1)
 		ft_printf("Vous avez abandonne\n");
 	else if (j == 2)
-		ft_printf("Vous avez gagne en %i essais\n", icnt / 64);
+		ft_printf("Vous avez gagne en %i essais\n", icnt);
 	else if (j == 3)
 		ft_printf("Error\nMalloc");
+	else if (j == 4)
+		ft_printf("Vous avez ete absorbe par le trou noir.\n");
 	exit(0);
 	return (0);
 }
@@ -57,11 +59,12 @@ int	ft_check_flag(t_data *data)
 	return (1);
 }
 
-void	ft_put_cnt_text(t_data *data, int i)
+int	ft_put_cnt_text(t_data *data, int i)
 {
 	char	*str;
 	char	*ptr;
 
+	i ++;
 	ptr = ft_itoa(i);
 	str = ft_strjoin("Mouvements : ", ptr);
 	free(ptr);
@@ -69,7 +72,7 @@ void	ft_put_cnt_text(t_data *data, int i)
 	ft_put_img_by_char(data, data->map->map[1][2], 2, 1);
 	mlx_string_put(data->mlx, data->mlx_win, 5, 30, 0x00FFFFFF, str);
 	free(str);
-	
+	return (i);
 }
 
 int	ft_press_cross(t_data *data)

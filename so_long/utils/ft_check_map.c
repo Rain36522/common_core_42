@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:50:31 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/02 16:11:34 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 11:09:16 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_check_char(char *line)
 	{
 		if (line[i] == '0' || line[i] == '1' || line[i] == 'C')
 			i ++;
-		else if (line[i] == 'E' || line[i] == 'P')
+		else if (line[i] == 'E' || line[i] == 'P' || line[i] == 'B')
 			i ++;
 		else
 			return (0);
@@ -69,7 +69,7 @@ int	ft_free_line(char *line, char *line2, int i, int fd)
 	else if (i == 5)
 		ft_printf("Error\nLa map se terminer de fasson inconnue.\n");
 	if (i > 0)
-		return (0);
+		exit (0);
 	return (1);
 }
 
@@ -79,10 +79,10 @@ static int	ft_check_map2(int fd, int isize, char *line, int ielem)
 
 	old_line = get_next_line(fd);
 	line = get_next_line(fd);
-	while (line && (int)ft_strlen(old_line) == isize + 1 && ielem <= 2)
+	while (line && ielem <= 2)
 	{
 		if (ft_check_line(old_line, line, isize, fd) == 0)
-			return (ft_free_line(old_line, line, 6, fd));
+			return (0);
 		if (ft_strchr(old_line, 'E'))
 			ielem ++;
 		if (ft_strchr(old_line, 'P'))
@@ -111,13 +111,16 @@ int	ft_check_map(char *path)
 
 	fd = open(path, O_RDWR);
 	if (fd < 0)
+	{
+		ft_printf("Error\nMap introuvable\n");
 		return (0);
+	}
 	isize = 0;
 	line = get_next_line(fd);
 	isize = ft_check_first_line(line);
 	free(line);
 	if (isize == 0)
-	return (0);
+		return (0);
 	ielem = 0;
 	i = ft_check_map2(fd, isize, line, ielem);
 	close(fd);
