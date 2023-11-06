@@ -98,7 +98,7 @@ t_lst_pos	*check_input(int nArg, char **Args)
 	return (ft_full_stack_a(nArg, Args));
 }
 
-/*
+
 void	ft_put_stacks(t_lst_pos *start)
 {
 	t_stack	*pos_a;
@@ -123,4 +123,4 @@ void	ft_put_stacks(t_lst_pos *start)
 		}
 		printf("\n");
 	}
-}*/
+}

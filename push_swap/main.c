@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-/*
+
 int	ft_mvstacks(t_lst_pos *start)
 {
 	char	s[] = "salut";
@@ -65,7 +65,7 @@ int	ft_mvstacks(t_lst_pos *start)
 	}
 	ft_lst_clear(start);
 	return (0);
-}*/
+}
 
 int	main(int nArg, char **Args)
 {
@@ -79,7 +79,10 @@ int	main(int nArg, char **Args)
 			write(1, "Error\n", 6);
 		return (0);
 	}
+	
 	isize = ft_cnt_stack(start->strt_a);
+	ft_put_stacks(start);
+	ft_mvstacks(start);
 	if (ft_check_sort(start->strt_a))
 	{
 		ft_lst_clear(start);
@@ -93,5 +96,6 @@ int	main(int nArg, char **Args)
 		start = ft_solve_5(start);
 	else
 		start = ft_radix(start);
+	ft_put_stacks(start);
 	ft_lst_clear(start);
 }

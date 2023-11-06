@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:50:31 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/03 11:44:04 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/06 08:47:46 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,16 @@ static int	ft_check_map2(int fd, int isize, char *line, int ielem)
 
 	old_line = get_next_line(fd);
 	line = get_next_line(fd);
-	while (line && ielem <= 2)
+	while (line)
 	{
 		if (ft_check_line(old_line, line, isize, fd) == 0)
 			return (0);
-		if (ft_strchr(old_line, 'E'))
-			ielem ++;
-		if (ft_strchr(old_line, 'P'))
-			ielem ++;
+		ielem += ft_check_elem(old_line);
 		free(old_line);
 		old_line = line;
 		line = get_next_line(fd);
 	}
-	if (ielem != 2)
+	if (ielem != 5)
 		return (ft_free_line(old_line, line, 4, fd));
 	else if (old_line[0] == '\n' || (line && line[0] != '\0'))
 		return (ft_free_line(line, old_line, 5, fd));

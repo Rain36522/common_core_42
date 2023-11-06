@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 16:36:38 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/03 11:29:20 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 12:50:38 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_quit(t_data *data, int j, int icnt)
 	if (j == 1)
 		ft_printf("Vous avez abandonne\n");
 	else if (j == 2)
-		ft_printf("Vous avez gagne en %i mouvements\n", icnt + 1);
+		ft_printf("Vous avez gagne en %i mouvements\n", icnt);
 	else if (j == 3)
 		ft_printf("Error\nMalloc");
 	else if (j == 4)
@@ -79,4 +79,22 @@ int	ft_press_cross(t_data *data)
 {
 	ft_quit(data, 1, 0);
 	return (0);
+}
+
+int	ft_check_elem(char *line)
+{
+	int	i;
+	int	icnt;
+
+	i = 0;
+	icnt = 0;
+	while (line[i])
+	{
+		if (line[i] == 'P')
+			icnt += 2;
+		else if (line[i] == 'E')
+			icnt += 3;
+		i ++;
+	}
+	return (icnt);
 }

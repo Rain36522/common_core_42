@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:58:05 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/03 09:01:47 by pudry            ###   ########.fr       */
+/*   Updated: 2023/11/03 12:50:32 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_put_img_by_char(t_data *data, char c, int i, int j);
 void	ft_move__offset(t_data *data, int of_x, int of_y);
 int		ft_check_flag(t_data *data);
 int		ft_put_cnt_text(t_data *data, int i);
+int		ft_check_elem(char *line);
 int		ft_move_l(t_data *data, int i, int icnt);
 int		ft_move_r(t_data *data, int i, int icnt);
 int		ft_move_u(t_data *data, int i, int icnt);
