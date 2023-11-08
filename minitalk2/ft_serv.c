@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_serv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 09:33:36 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/06 15:46:55 by pudry            ###   ########.fr       */
+/*   Created: 2023/11/06 21:57:16 by pudry             #+#    #+#             */
+/*   Updated: 2023/11/06 21:57:16 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void sig_handler_usr(int signum)
 		s_bin[8] = '\0';
 		ibit = 0;
 	}
-	if (signum == 30)
+	printf("num : %i\n", signum);
+	if (signum == 10)
 		s_bin[ibit] = '0';
 	else
 		s_bin[ibit] = '1';
@@ -33,19 +34,20 @@ void sig_handler_usr(int signum)
 	if (ibit >= 8)
 	{
 		ibit = 0;
-		ft_printf("%s\n", s_bin);
+		printf("%s\n", s_bin);
 		free(s_bin);
 	}
 }
 
 
-int main(){
+int main()
+{
 	pid_t pid;
 	signal(SIGUSR1, sig_handler_usr);
 	signal(SIGUSR2, sig_handler_usr);
 	pid=getpid();
-	ft_printf("pid : %i\n", pid);
+	printf("pid : %i\n", pid);
 	while (1)
-		usleep(30);
+		{};
 	return 0;
 }

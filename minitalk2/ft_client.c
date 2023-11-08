@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_client.c                                        :+:      :+:    :+:   */
+/*   ft_serv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 09:33:36 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/06 15:44:54 by pudry            ###   ########.fr       */
+/*   Created: 2023/11/06 21:08:08 by pudry             #+#    #+#             */
+/*   Updated: 2023/11/06 21:08:08 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,20 @@ void	ft_send_msg(char *c, pid_t pid)
 	i = 0;
 	while (i < 8 && c[i])
 	{
-		if (c[i] == 0)
+		if (c[i] == '0')
+		{
 			kill(pid,SIGUSR1);
+			printf("0");
+		}
 		else
+		{
 			kill(pid,SIGUSR2);
+			printf("1");
+		}
 		i ++;
-	}
-	free(c);
+		usleep(100);
+	};
+	printf("\n");
 }
 
 void	ft_send_str(char *str, pid_t pid)
@@ -38,12 +45,16 @@ void	ft_send_str(char *str, pid_t pid)
 	if (!c)
 		return ;
 	c[8] = '\0';
+	printf("41\n");
 	while (str[i])
 	{
 		c = ft_char_to_bin((unsigned int)str[i], c);
+		printf("bin : %s\n", c);
 		ft_send_msg(c, pid);
+		i ++;
 	}
-	ft_send_msg("00000000", pid);
+	free(c);
+	//ft_send_msg("00000000", pid);
 }
 
 

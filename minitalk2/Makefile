@@ -6,7 +6,7 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 09:01:54 by pudry             #+#    #+#              #
-#    Updated: 2023/11/06 15:56:58 by pudry            ###   ########.fr        #
+#    Updated: 2023/11/06 20:44:03 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,27 +25,27 @@ GREEN = \\033[1;32m
 BRWN = \\033[0; 33m
 
 SRC_SRV = ft_serv.c
-SRC_CLT = ft_client.c utils/ft_utils.c
+SRC_CLT = ft_client.c ft_utils.c
 
 OBJ_SRV = $(SRC_SRV:.c=.o)
 OBJ_CLT = $(SRC_CLT:.c=.o)
 
 all : header gen_obj
 	@make -C libft/
-	@make -C printf/
-	@$(CC) $(FLAGS) $(OBJ_SRV) $(LIBFT) $(PRINTF) -o $(NAME_SRV)
-	@$(CC) $(FLAGS) $(OBJ_CLT) $(LIBFT) $(PRINTF) -o $(NAME_CLT)
+	@$(CC) $(FLAGS) $(OBJ_SRV) $(LIBFT) -o $(NAME_SRV)
+	@$(CC) $(FLAGS) $(OBJ_CLT) $(LIBFT) -o $(NAME_CLT)
+
+gen_obj:
+	@$(CC) $(CFLAGS) -c $(SRC_CLT) $(SRC_SRV)
 
 clt : header gen_obj
 	@make -C libft/
-	@make -C printf/
-	@$(CC) $(FLAGS) $(OBJ_CLT) $(LIBFT) $(PRINTF) -o $(NAME_CLT)
+	@$(CC) $(FLAGS) $(OBJ_CLT) $(LIBFT) -o $(NAME_CLT)
 
 
 srv : header gen_obj
 	@make -C libft/
-	@make -C printf/
-	@$(CC) $(FLAGS) $(OBJ_SRV) $(LIBFT) $(PRINTF) -o $(NAME_SRV)
+	@$(CC) $(FLAGS) $(OBJ_SRV) $(LIBFT) -o $(NAME_SRV)
 	./$(NAME_SRV)
 
 
@@ -60,10 +60,6 @@ fclean : clean
 	@make clean -C printf/
 
 re : fclean all
-
-gen_obj:
-	@$(CC) $(CFLAGS) -c $(SRC_CLT) $(SRC_SRV)
-
 
 header :
 	@echo "${GREEN}"
