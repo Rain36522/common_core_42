@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:03:14 by pudry             #+#    #+#             */
-/*   Updated: 2023/11/04 13:03:14 by pudry            ###   ########.ch       */
+/*   Created: 2023/10/09 18:42:30 by pudry             #+#    #+#             */
+/*   Updated: 2023/10/10 09:35:25 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <signal.h>
-# include <unistd.h>
-
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		write(fd, s, 1);
+		s ++;
+	}
+}
