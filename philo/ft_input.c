@@ -19,7 +19,7 @@ static int	ft_strcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] && s1[i] == s2[i])
 		i ++;
-	return (s1 - s2)
+	return (s1 - s2);
 }
 
 static int	ft_check_int(char *str)
@@ -67,12 +67,14 @@ t_data	*treat_input(char **argv)
 	while (argv[i])
 		if (!ft_check_int(argv[i ++]))
 			return (NULL);
-	if (i != 6)
+	if (i < 5)
 		return (0);
 	data->ifork = char_to_int(argv[1]);
 	data->t_die = char_to_int(argv[2]);
 	data->t_eat = char_to_int(argv[3]);
 	data->t_sleep = char_to_int(argv[4]);
-	data->n_eat = char_to_int(argv[5]);
+	data->n_eat = 2147483647;
+	if (argv[5])
+		data->n_eat = char_to_int(argv[5]);
 	data->next = NULL;
 }

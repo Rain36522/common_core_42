@@ -19,7 +19,7 @@ void	*ft_free_philo(t_philo	*philo)
 		free(philo);
 		philo = philo->next;
 	}
-	return (NULL;)
+	return (NULL);
 }
 
 static t_philo	*create_philo(t_data *data)
@@ -68,10 +68,10 @@ t_philo	*creat_philo(t_data *data)
 	while (i <= data->ifork)
 	{
 		philo = philo_add_back(data, philo);
+		if (!philo)
+			return (NULL);
 		i ++;
 	}
-	if (!philo)
-		return (NULL);
 	mem_philo = philo;
 	while (philo->next)
 		philo = philo->next;

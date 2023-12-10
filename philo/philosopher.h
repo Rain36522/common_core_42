@@ -34,6 +34,7 @@ typedef struct s_philo {
 	int				t_sleep;
 	int				ilast_eat;
 	int				ilast_sleep;
+	int				ieat;
 	int				ifork;
 	int				ileft_fork;
 	int				*iright_fork;
