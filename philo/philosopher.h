@@ -18,22 +18,28 @@
 # include <sys/time.h>
 
 typedef struct s_data {
-	int		ifork;
-	int		t_die;
-	int		t_eat;
-	int		t_sleep;
-	int		n_eat;
-	s_data	*next;
-}			t_data;
+	int				ifork;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				n_eat;
+	int				irun;
+	struct s_data	*next;
+}	t_data;
 
 typedef struct s_philo {
-	int		iactivity;
-	int		ieat;
-	int		istart;
-	int		ifork;
-	s_philo	*prev;
-	s_philo	*next;
-}		t_philo;
+	int				philo_id;
+	int				iactivity;
+	int				t_eat;
+	int				t_sleep;
+	int				ilast_eat;
+	int				ilast_sleep;
+	int				ifork;
+	int				ileft_fork;
+	int				*iright_fork;
+	int				*irun;
+	struct s_philo	*next;
+}	t_philo;
 
 t_data		*treat_input(char **argv);
 
