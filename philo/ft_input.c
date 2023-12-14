@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 19:54:54 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/09 20:00:54 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/11 10:04:32 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/11 10:04:32 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ static int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
+	if (ft_strlen(s1) < ft_strlen(s2))
+		return (0);
 	while (s1[i] && s1[i] == s2[i])
+	{
 		i ++;
-	return (s1 - s2);
+	}
+	return (s1[i] - s2[i]);
 }
 
 static int	ft_check_int(char *str)
@@ -31,7 +35,7 @@ static int	ft_check_int(char *str)
 		mem_str ++;
 	if (!*str || *mem_str)
 		return (0);
-	else if (ft_strcmp(str, "2147483647") < 0)
+	else if (ft_strcmp(str, "2147483647") > 0)
 		return (0);
 	return (1);
 }
@@ -39,16 +43,17 @@ static int	ft_check_int(char *str)
 int	char_to_int(char *str)
 {
 	unsigned int	i_diz;
-	unsigned int	i;
+	int				i;
 	int				ireturn;
 
 	i = 0;
-	i_diz = 0;
+	i_diz = 1;
+	ireturn = 0;
 	while (str[i + 1])
 		i ++;
 	while (i >= 0)
 	{
-		ireturn += str[i] - '0' * i_diz;
+		ireturn += (str[i] - '0') * i_diz;
 		i_diz *= 10;
 		i --;
 	}
@@ -65,10 +70,14 @@ t_data	*treat_input(char **argv)
 		return (NULL);
 	i = 1;
 	while (argv[i])
-		if (!ft_check_int(argv[i ++]))
+	{
+		if (!ft_check_int(argv[i]))
+		{
+			printf("Error : Arguemnt invalid %s\n", argv[i]);
 			return (NULL);
-	if (i < 5)
-		return (0);
+		}
+		i ++;
+	}
 	data->ifork = char_to_int(argv[1]);
 	data->t_die = char_to_int(argv[2]);
 	data->t_eat = char_to_int(argv[3]);
@@ -77,4 +86,5 @@ t_data	*treat_input(char **argv)
 	if (argv[5])
 		data->n_eat = char_to_int(argv[5]);
 	data->next = NULL;
+	return (data);
 }

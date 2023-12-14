@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 20:10:24 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/09 20:10:24 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/14 13:46:26 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/14 13:46:26 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_free_philo(t_philo	*philo)
 	return (NULL);
 }
 
-static t_philo	*create_philo(t_data *data)
+static t_philo	*gen_philo(t_data *data)
 {
 	t_philo		*philo;
 
@@ -31,12 +31,19 @@ static t_philo	*create_philo(t_data *data)
 		return (NULL);
 	philo->t_eat = data->t_eat;
 	philo->t_sleep = data->t_sleep;
+	philo->n_eat = data->n_eat;
+	philo->irun = &data->irun;
+	philo->t_die = data->t_die;
 	philo->ileft_fork = 1;
 	philo->next = NULL;
-	philo->iactivity = 0;
-	philo->irun = &data->irun;
+	philo->istrt = data->istart_time;
 	philo->philo_id = 1;
 	philo->ifork = 0;
+	philo->ieat = 0;
+	philo->ileft_fork = 1;
+	philo->iright_fork = NULL;
+	philo->ilast_eat = time_to_ms();
+	philo->ilast_sleep = time_to_ms();
 	return (philo);
 }
 
@@ -45,11 +52,11 @@ static t_philo	*philo_add_back(t_data *data, t_philo *philo)
 	t_philo	*mem_philo;
 
 	if (!philo)
-		return (creat_philo(data));
-	mem_philo = philo->next;
+		return (gen_philo(data));
+	mem_philo = philo;
 	while (philo->next)
 		philo = philo->next;
-	philo->next = creat_philo(data);
+	philo->next = gen_philo(data);
 	if (!philo->next)
 		return (ft_free_philo(mem_philo));
 	philo->next->iright_fork = &philo->ileft_fork;
@@ -65,16 +72,22 @@ t_philo	*creat_philo(t_data *data)
 
 	i = 0;
 	philo = NULL;
-	while (i <= data->ifork)
+	while (i < data->ifork)
 	{
 		philo = philo_add_back(data, philo);
 		if (!philo)
 			return (NULL);
 		i ++;
+		ft_put_philo(philo);
+	}
+	if (data->ifork == 1)
+	{
+		philo->iright_fork = NULL;
+		return (philo);
 	}
 	mem_philo = philo;
 	while (philo->next)
 		philo = philo->next;
-	philo->iright_fork = &mem_philo->ileft_fork;
+	mem_philo->iright_fork = &philo->ileft_fork;
 	return (mem_philo);
 }
