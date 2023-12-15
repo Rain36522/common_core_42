@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 10:04:32 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/11 10:04:32 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/14 16:08:37 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/14 16:08:54 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ t_data	*treat_input(char **argv)
 	int		i;
 	t_data	*data;
 
-	data = (t_data *) malloc(sizeof(t_data));
-	if (!data)
-		return (NULL);
 	i = 1;
 	while (argv[i])
 	{
@@ -78,6 +75,9 @@ t_data	*treat_input(char **argv)
 		}
 		i ++;
 	}
+	data = (t_data *) malloc(sizeof(t_data));
+	if (!data)
+		return (NULL);
 	data->ifork = char_to_int(argv[1]);
 	data->t_die = char_to_int(argv[2]);
 	data->t_eat = char_to_int(argv[3]);

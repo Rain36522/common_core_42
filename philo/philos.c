@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 14:23:15 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/14 14:29:22 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/14 16:11:42 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/14 16:11:42 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*odd_philosopher(void *ptr)
 		if (!i || !*philo->irun || philo->ieat >= philo->n_eat)
 			break ;
 		i = ft_philo_sleep(philo);
-		if (!i || !ft_philo_think(philo) || !*philo->irun || ft_is_die(philo))
+		if (!i || !*philo->irun || !ft_philo_think(philo) || ft_is_die(philo))
 			break ;
 		printf("%u %i is eating\n", time_to_ms() - philo->istrt, philo->philo_id);
 		ft_usleep(philo->t_eat);

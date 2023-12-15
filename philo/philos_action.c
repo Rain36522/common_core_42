@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 14:22:15 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/14 14:22:15 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/14 14:37:12 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/14 16:05:32 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	ft_is_die(t_philo *philo)
 		ft_usleep(philo->t_die - itime_last_sleep);
 	else
 		return (0);
-	DEBUG
 	i = *philo->irun;
 	*philo->irun = 0;
 	if (i != *philo->irun)
@@ -62,14 +61,6 @@ int	ft_philo_think(t_philo *philo)
 			printf("%u %i has taken a fork\n", time_to_ms() - philo->istrt, philo->philo_id);
 			printf("%u %i has taken a fork\n", time_to_ms() - philo->istrt, philo->philo_id);
 		}
-		// if (philo->iright_fork && *philo->iright_fork && philo->ifork)
-		// {
-		// 	pthread_mutex_lock(&philo->mutex_id);
-		// 	*philo->iright_fork = 0;
-		// 	pthread_mutex_unlock(&philo->mutex_id);
-		// 	philo->ifork ++;
-		// 	printf("%u %i has taken a fork\n", time_to_ms() - philo->istrt, philo->philo_id);
-		// }
 	}
 	return (1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 13:45:36 by pudry             #+#    #+#             */
-/*   Updated: 2023/12/14 13:45:36 by pudry            ###   ########.ch       */
+/*   Created: 2023/12/14 16:06:19 by pudry             #+#    #+#             */
+/*   Updated: 2023/12/14 16:07:58 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ void	ft_put_philo(t_philo *philo)
 	}
 }
 
+static void	ft_free_philo(t_philo *philo)
+{
+	t_philo	*nxt;
+
+	while (philo)
+	{
+		nxt = philo->next;
+		free(philo);
+		philo = nxt;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -46,9 +58,10 @@ int	main(int argc, char **argv)
 		return (12);
 	data->istart_time = time_to_ms();
 	philo = creat_philo(data);
-	ft_put_philo(philo);
 	launch_philo(philo);
 	while (data->irun == 1);
 	printf("fini\n");
+	free(data);
+	ft_free_philo(philo);
 	return (0);
 }
