@@ -79,7 +79,7 @@ int	ft_press_cross(t_data *data)
 {
 	ft_quit(data, 1, 0);
 	return (0);
-}
+} 
 
 int	ft_check_elem(char *line)
 {
