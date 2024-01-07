@@ -5,100 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 14:08:29 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/06 17:54:31 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/07 09:38:48 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/07 11:49:46 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Contact.hpp"
 
-static char*	get_data(void)
+//set the private element
+void	Contact::set_fname(std::string str)
 {
-	char	*str;
-
-	str = NULL;
-	while (!str && !*str)
-	{
-		if (str)
-			std::cout << "Invalid input, try again" << std::endl;
-		std::cin >> str;
-	}
-	return (str);
-
-
+	this->_fName = str;
 }
 
-void	Contact::set_contact(char **array)
+void	Contact::set_lname(std::string str)
 {
-	array[0] = this->_fName;
-	array[1] = this->_lName;
-	array[2] = this->_nickname;
-	array[3] = this->_phone;
-	array[4] = this->_pwd;
-	array[5] = NULL;
-	delete(array);
+	this->_lName = str;
 }
 
-void	Contact::get_new_contact(void)
+void	Contact::set_nick(std::string str)
 {
-	std::cout << "Veuillez saisir les informatiosn :" << std::endl;
-	std::cout << "First name :" << std::endl;
-	this->_fName = get_data();
-	std::cout << "Last name:" << std::endl;
-	this->_lName = get_data();
-	std::cout << "Nickname :" << std::endl;
-	this->_nickname = get_data();
-	std::cout << "Phone number :" << std::endl;
-	this->_phone = get_data();
-	std::cout << "Secret phrase :" << std::endl;
-	this->_pwd = get_data();
-	
+	this->_Nickname = str;
 }
 
-void	Contact::print_full_contact(void) const
+void	Contact::set_phone(std::string str)
 {
-	std::cout << "There\'s the choosen contact :" << std::endl;
-	std::cout << "Firstname     :" << this->_fName << std::endl;
-	std::cout << "Last name     :" << this->_lName << std::endl;
-	std::cout << "nickname      :" << this->_nickname << std::endl;
-	std::cout << "Phone number  :" << this->_phone << std::endl;
-	std::cout << "Secret phrase :" << this->_pwd << std::endl;
+	this->_Phone = str;
 }
 
-void	Contact::print_contact(int i) const
+void	Contact::set_pwd(std::string str)
 {
-	if (!*this->_fName)
-		return;
-	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << "| " << i << " | ";
-	std::cout.write(this->_fName, 10);
-	std::cout << " | ";
-	std::cout.write(this->_lName, 10);
-	std::cout << " | ";
-	std::cout.write(this->_nickname, 10);
-	std::cout << " |" << std::endl;
+	this->_Pwd = str;
 }
 
-char**	Contact::put_contact_in_array(void)
+//get the private element
+std::string	Contact::get_fname(void) const
 {
-	char	**array;
-
-	array = new char*[5];
-	array[0] = this->_fName;
-	array[1] = this->_lName;
-	array[2] = this->_nickname;
-	array[3] = this->_phone;
-	array[4] = this->_pwd;
-	return (array);
+	return (this->_fName);
 }
 
-Contact::Contact(void)
+std::string	Contact::get_lname(void) const
 {
-	std::cout << "Contructor Contact called" << std::endl;
+	return (this->_lName);
 }
 
-Contact::~Contact(void)
+std::string	Contact::get_nick(void) const
 {
-	std::cout << "Destructor Contact called" << std::endl;
+	return (this->_Nickname);
 }
+
+std::string	Contact::get_phone(void) const
+{
+	return (this->_Phone);
+}
+
+std::string	Contact::get_pwd(void) const
+{
+	return (this->_Pwd);
+}
+
+
+
+Contact::Contact(void)	{}
+
+Contact::~Contact(void)	{}

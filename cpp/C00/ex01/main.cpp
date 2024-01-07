@@ -5,81 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 16:24:16 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/06 18:00:11 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/07 10:34:12 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/07 12:58:53 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
+
 #include <iostream>
+#include "PhoneBook.hpp"
 
-void	ft_add(Contact *ctc, PhoneBook *pb)
+static std::string	ft_read()
 {
-	char	**array;
+	std::string	str;
 
-	array = ctc->put_contact_in_array();
-	pb->set_contact(array);
+	std::getline(std::cin, str);
+	if (std::cin.fail() || std::cin.eof())
+		exit(0);
+	else if (str.empty())
+		return("");
+	else
+		return (str);
 }
 
-void	ft_search(Contact *ctc, PhoneBook *pb)
-{
-	char	**array;
-	char	*str;
 
-	str = NULL;
-	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << "| N | First name | last  name |  nickname  |" << std::endl;
-	for (int i = 0; i < 8; i ++)
-	{
-		array = pb->give_contact(i);
-		ctc->set_contact(array);
-		ctc->print_contact(i);
-	}
-	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << std::endl << "Select the contact index :";
-	while ((!str && !*str) || ((str[0] < '0' || str[0] > '8') && !str[1]))
-	{
-		if (str)
-			std::cout << "Invalid input, try again : ";
-		std::cin >> str;
-		std::cout << std::endl;
-	}
-	array = pb->give_contact((int)(str[0] - '0'));
-	ctc->set_contact(array);
-	ctc->print_full_contact();
-}
-
-static std::string	get_word(void)
+static std::string	get_cmd(void)
 {
 	std::string str;
 
-	std::cout << "Input :";
-	std::cin >> str;
-	std::cout << std::endl;
+	std::cout << "Type an input (ADD, SEARCH, EXIT) : ";
+	str = ft_read();
 	while (str != "ADD" && str != "SEARCH" && str != "EXIT")
 	{
-		std::cout << "Invalid input, try again : ";
-		std::cin >> str;
-		std::cout << std::endl;
+		std::cout << "Wrong input , try again : ";
+		str = ft_read();
 	}
 	return (str);
 }
 
-int	main(void)
+static int	get_index(int	imax)
 {
 	std::string	str;
-	Contact		ctc;
-	PhoneBook	pb;
+	int			i;
 
-	str = get_word();
+	std::cout << "Select the index of the contact between 1 and " << imax << " : ";
+	str = ft_read();
+	while (str == "" && str.length() != 1 && str[0] <= '0' && str[0] >= imax + '0')
+	{
+		std::cout << "Invalid input, try again : ";
+		str = ft_read();
+	}
+	return ((int)(str[0] - '0'));
+}
+
+int	main(void)
+{
+	PhoneBook	pb;
+	std::string	str;
+
 	while (str != "EXIT")
 	{
+		str = get_cmd();
 		if (str == "ADD")
-			ft_add(&ctc, &pb);
+			pb.get_new_contact();
 		else if (str == "SEARCH")
-			ft_search(&ctc, &pb);
-		str = get_word();
+		{
+			pb.put_contact_list();
+			if (pb.init_ctc != 0)
+				pb.put_one_contact(get_index(pb.init_ctc));
+			else
+				std::cout << "The phone book is empty" << std::endl;
+		}
 	}
-	
 }

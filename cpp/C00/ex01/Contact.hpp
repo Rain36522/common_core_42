@@ -5,32 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:11:06 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/06 16:40:45 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/07 09:23:03 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/07 11:17:29 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Contact__HPP
-# define Contact__HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
+# include <iostream>
 
 class Contact
 {
-	public:
+	public :
 		Contact(void);
 		~Contact(void);
 
-		void	set_contact(char **array);
-		void	print_contact(int i) const;
-		void	print_full_contact(void) const;
-		void	get_new_contact(void);
-		char**	put_contact_in_array(void);
+		std::string	get_fname(void) const;
+		std::string	get_lname(void) const;
+		std::string	get_nick(void) const;
+		std::string	get_phone(void) const;
+		std::string	get_pwd(void) const;
+		
+		void		set_fname(std::string str);
+		void		set_lname(std::string str);
+		void		set_nick(std::string str);
+		void		set_phone(std::string str);
+		void		set_pwd(std::string str);
 
 	private:
-		char*	_fName;
-		char*	_lName;
-		char*	_nickname;
-		char*	_phone;
-		char*	_pwd;
+		std::string	_fName;
+		std::string	_lName;
+		std::string	_Nickname;
+		std::string	_Phone;
+		std::string	_Pwd;
 };
-
 #endif
