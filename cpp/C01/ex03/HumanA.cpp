@@ -14,10 +14,10 @@
 
 void	HumanA::attack(void) const
 {
-	std::cout << this->name << " attacks wiyh their " << this->Weapon.getType() << std::endl;
+	std::cout << this->name << " attacks wiyh their " << this->gun.getType() << std::endl;
 }
 
-HumanA::HumanA(std::string str, Weapon gun) : name(str) Weapon(&gun)
+HumanA::HumanA(std::string str, Weapon &guns) : gun(guns), name(str)
 {
 	std::cout << "Constructor human A called\n";
 }

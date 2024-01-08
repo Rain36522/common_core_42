@@ -6,22 +6,22 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 14:20:57 by pudry             #+#    #+#              #
-#    Updated: 2024/01/08 15:14:49 by pudry            ###   ########.fr        #
+#    Updated: 2024/01/07 15:32:12 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-NAME = unnecessary_violence
+NAME = str
 CC = c++
 
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
 
-.cpp.o:
+.c.o:
 	$(CC) -c -o $@ $< $(FLAGS)
 
 $(NAME): $(OBJ)

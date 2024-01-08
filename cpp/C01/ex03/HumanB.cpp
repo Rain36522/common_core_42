@@ -14,18 +14,18 @@
 
 void	HumanB::attack(void) const
 {
-	if (this->Weapon.getType() != "")
-		std::cout << this->name << " attacks wiyh their " << this->Weapon.getType() << std::endl;
+	if (this->weapons != NULL)
+		std::cout << this->name << " attacks wiyh their " << this->weapons->getType() << std::endl;
 	else
 		std::cout << this->name << " Don\'t attack\n"; 
 }
 
-void	HumanB::setWeapon(std::string str)
+void	HumanB::setWeapon(Weapon &weapon)
 {
-	this->Weapon.setType(str);
+	this->weapons = &weapon;
 }
 
-HumanB::HumanB(Weapon gun) : Weapon(gun)
+HumanB::HumanB(std::string str) : name(str)
 {
 	std::cout << "Constructor human B called\n";
 }
