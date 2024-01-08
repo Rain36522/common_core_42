@@ -19,7 +19,7 @@
 class Weapon
 {
 	public:
-		Weapon(void);
+		Weapon(std::string str);
 		~Weapon(void);
 
 		std::string	getType(void) const;

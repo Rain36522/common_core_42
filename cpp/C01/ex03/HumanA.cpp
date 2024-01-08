@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:30:56 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/08 11:31:06 by pudry            ###   ########.ch       */
+/*   Created: 2024/01/08 11:27:57 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/08 11:27:57 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __HUMANA__HPP
-# define __HUMANA__HPP
+#include "HumanA.hpp"
 
-# include <iostream>
-# include "Weapon.hpp"
-
-class HumanA
+void	HumanA::attack(void) const
 {
-	public:
-		HumanA(std::string str, Weapon gun);
-		~HumanA(void);
+	std::cout << this->name << " attacks wiyh their " << this->Weapon.getType() << std::endl;
+}
 
-		void	attack(void) const;
-	
-	private:
-		Weapon		*Weapon;
-		std::string	name;
+HumanA::HumanA(std::string str, Weapon gun) : name(str) Weapon(&gun)
+{
+	std::cout << "Constructor human A called\n";
+}
 
-};
-
-#endif
+HumanA::~HumanA(void)
+{
+	std::cout << "Destructor human A called\n";
+}
