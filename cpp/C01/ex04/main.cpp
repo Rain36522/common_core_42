@@ -22,7 +22,6 @@ std::string	ft_replace(std::string ocur, std::string txt, std::string snew)
 	ipos = txt.find(ocur);
 	while (ipos != std::string::npos)
 	{
-		std::cout << "loop " << ipos << " " << ilen << std::endl;
 		if (ipos != txt.find(snew))
 		{
 			txt = txt.erase(ipos, ilen);
@@ -37,6 +36,7 @@ void	ft_new_file(std::string file, std::string str, std::string snew)
 {
 	std::ofstream	outfile;
 	std::ifstream	infile;
+	std::string		tmp;
 
 	infile.open(file);
 	if (infile.fail())
@@ -44,7 +44,17 @@ void	ft_new_file(std::string file, std::string str, std::string snew)
 		std::cout << "Error read file \n";
 		exit(0);
 	}
-	outfile
+	outfile.open(file + ".replace");
+	if (outfile.fail())
+	{
+		infile.close();
+		std::cout << "Error generate output file \n";
+		exit(0);
+	}
+	while (getline(infile, tmp))
+		outfile << ft_replace(str, tmp, snew) << std::endl;
+	outfile.close();
+	infile.close();
 }
 
 
