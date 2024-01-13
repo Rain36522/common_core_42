@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 14:46:08 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/10 18:13:19 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef __CAT__HPP
+# define __CAT__HPP
+
 #include <iostream>
-#include "Fixed.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-int main( void ) 
+class Cat : public Animal
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	public:
+		Cat(void);
+		~Cat(void);
+		Cat(const Cat &src);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+		Cat		&operator=(Cat const &src);
+		void	makeSound(void) const;
+	private:
+		Brain	*_brain;
+};
+
+#endif

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 14:46:08 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/10 17:14:12 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef __DOG__HPP
+# define __DOG__HPP
+
 #include <iostream>
-#include "Fixed.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Brain.hpp"
 
-int main( void ) 
+class Dog : public Animal
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	public:
+		Dog(void);
+		~Dog(void);
+		Dog(const Dog &src);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+		Dog		&operator=(Dog const &src);
+		void	makeSound(void) const;
+	private:
+		Brain	*_brain;
+};
+
+#endif

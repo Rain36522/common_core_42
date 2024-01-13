@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 14:34:45 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/10 16:49:22 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef __WRONGANIMAL__HPP
+# define __WRONGANIMAL__HPP
+
 #include <iostream>
-#include "Fixed.hpp"
 
-int main( void ) 
+class WrongAnimal
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	public:
+		WrongAnimal(void);
+		~WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &src);
+		WrongAnimal	&operator=(WrongAnimal const &src);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+		void			makeSound(void) const;
+		std::string		getType(void) const;
+
+	protected:
+		std::string	_type;
+};
+
+#endif

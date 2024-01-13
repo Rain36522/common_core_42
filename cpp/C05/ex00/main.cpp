@@ -5,25 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 14:56:45 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/13 18:25:21 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Fixed.hpp"
+#include "Bureaucrat.hpp"
 
-int main( void ) 
+int main()
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Bureaucrate	paul("paul", 149);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
+	try
+	{
+		Bureaucrate rip("rip", 151);
+	}
+	catch (void)
+	{
+		std::cout <<"Rip is not create\n";
+	}
+	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
+	++ paul;
+	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
+	++ paul;
+	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
+		return (0);
 }

@@ -6,24 +6,36 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Updated: 2024/01/10 14:18:15 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
+#include "SclavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main( void ) 
+int main( void )
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	ClapTrap	bob("bob");
+	SclavTrap	tom("Tom");
+	FragTrap	luc("luc");
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
+	tom.attack("bob");
+	tom.takeDamage(10);
+	tom.beRepaired(10);
+	tom.guardGate();
+
+	std::cout << "<=======================================================>\n";
+
+	bob.attack("bob");
+	bob.beRepaired(10);
+	bob.takeDamage(9);
+
+	std::cout << "<=======================================================>\n";
+
+	luc.attack("tom");
+	luc.beRepaired(10);
+	luc.takeDamage(10);
+	luc.highFivesGuys();
 }

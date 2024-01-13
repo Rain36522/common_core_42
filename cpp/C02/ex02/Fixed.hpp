@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:25 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/09 17:51:38 by pudry            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:23:43 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class Fixed
 		Fixed(const Fixed &src);
 
 		Fixed	&operator=(Fixed const &src);
-		Fixed	&operator++(int i);
-		Fixed	&operator--(int i);
-		Fixed	&operator++(void);
-		Fixed	&operator--(void);
+		Fixed	operator++(int i);
+		Fixed	operator--(int i);
+		Fixed	operator++(void);
+		Fixed	operator--(void);
 		Fixed	operator+(Fixed const &src);
 		Fixed	operator-(Fixed const &src);
 		Fixed	operator*(Fixed const &src);
@@ -44,14 +44,14 @@ class Fixed
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
-		Fixed	min(Fixed const &f1, Fixed const &f2);
-		Fixed	min(Fixed &f1, Fixed &f2);
-		Fixed	max(Fixed const &f1, Fixed const &f2);
-		Fixed	max(Fixed &f1, Fixed &f2);
+		static Fixed	min(Fixed const &f1, Fixed const &f2);
+		static Fixed	min(Fixed &f1, Fixed &f2);
+		static Fixed	max(Fixed const &f1, Fixed const &f2);
+		static Fixed	max(Fixed &f1, Fixed &f2);
 
 	private:
 		int					_rawBits;
-		static const int	_iliteral = 8;
+		static const int	_iliteral;
 
 };
 

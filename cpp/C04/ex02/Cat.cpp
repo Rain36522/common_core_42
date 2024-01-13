@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 14:49:54 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/10 18:06:48 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Fixed.hpp"
+#include "Cat.hpp"
 
-int main( void ) 
+void	Cat::makeSound(void) const
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << "Miaooowww\n";
+}
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
+Cat	&Cat::operator=(Cat const &src)
+{
+	*this = src;
+	return (*this);
+}
+
+Cat::Cat(const Cat &src)
+{
+	*this = src;
+}
+
+Cat::~Cat(void)
+{
+	delete this->_brain;
+	std::cout << "Cat destructor called\n";
+}
+
+Cat::Cat(void)
+{
+	this->_type = "Cat";
+	std::cout << "Cat constructor called\n";
+	this->_brain = new Brain();
 }

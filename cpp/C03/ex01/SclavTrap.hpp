@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   SclavTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:37:59 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:46 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/10 10:53:05 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/10 14:01:48 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef __SCLAVTRAP__HPP
+# define __SCLAVTRAP__HPP
+
 #include <iostream>
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) 
+class SclavTrap : public ClapTrap
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	public:
+		SclavTrap(std::string name);
+		~SclavTrap(void);
+		SclavTrap(const SclavTrap &src);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+		void	attack(std::string target);
+		void	guardGate();
+
+		SclavTrap	&operator=(SclavTrap const &src);
+};
+
+#endif

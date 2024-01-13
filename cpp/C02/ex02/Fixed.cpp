@@ -6,12 +6,14 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:50:08 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/09 17:51:58 by pudry            ###   ########.fr       */
+/*   Updated: 2024/01/10 10:43:21 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+
+const int Fixed::_iliteral = 8;
 
 float	Fixed::toFloat(void) const
 {
@@ -105,67 +107,53 @@ bool	Fixed::operator>(Fixed const &src)
 
 Fixed	Fixed::operator+(Fixed const &src)
 {
-	Fixed	result;
-
-	result.setRawBits(src.getRawBits() + this->getRawBits());
-	return (result);
+	return (this->toFloat() + src.toFloat());
 }
 
 Fixed	Fixed::operator-(Fixed const &src)
 {
-	Fixed	result;
-
-	result.setRawBits(src.getRawBits() - this->getRawBits());
-	return (result);
+	return (this->toFloat() - src.toFloat());
 }
 
 Fixed	Fixed::operator*(Fixed const &src)
 {
-	Fixed	result;
-
-	result.setRawBits(src.getRawBits() * this->getRawBits());
-	return (result);
+	return (src.toFloat() * this->toFloat());
 }
 
 Fixed	Fixed::operator/(Fixed const &src)
 {
-	Fixed	result;
-
-	result.setRawBits(src.getRawBits() / this->getRawBits());
-	return (result);
+	return (this->toFloat() / src.toFloat());
 }
 
-Fixed	&Fixed::operator++(void)
+Fixed	Fixed::operator++(void)
 {
-	this->setRawBits(this->getRawBits() + 1);
+	this->_rawBits ++;
 	return (*this);
 }
 
-Fixed	&Fixed::operator--(void)
+Fixed	Fixed::operator--(void)
 {
-	this->setRawBits(this->getRawBits() - 1);
+	this->_rawBits --;
 	return (*this);
 }
 
-Fixed	&Fixed::operator++(int i)
+Fixed	Fixed::operator++(int i)
 {
 	Fixed tmp(*this);
 
-	tmp.setRawBits(tmp.getRawBits() + 1);
-	*this = tmp;
-	return (*this);
+	this->_rawBits ++;
+	return (tmp);
 }
 
-Fixed	&Fixed::operator--(int i)
+Fixed	Fixed::operator--(int i)
 {
 	Fixed tmp(*this);
 
-	tmp.setRawBits(tmp.getRawBits() - 1);
-	*this = tmp;
-	return (*this);
+	this->_rawBits --;
+	return (tmp);
 }
 
-Fixed	min(Fixed const &f1, Fixed const &f2)
+Fixed	Fixed::min(Fixed const &f1, Fixed const &f2)
 {
 	if (f1.toFloat() < f2.toFloat())
 		return (f1);
@@ -173,7 +161,7 @@ Fixed	min(Fixed const &f1, Fixed const &f2)
 		return (f2);
 }
 
-Fixed	min(Fixed &f1, Fixed &f2)
+Fixed	Fixed::min(Fixed &f1, Fixed &f2)
 {
 	if (f1.toFloat() < f2.toFloat())
 		return (f1);
@@ -181,7 +169,7 @@ Fixed	min(Fixed &f1, Fixed &f2)
 		return (f2);
 }
 
-Fixed	max(Fixed const &f1, Fixed const &f2)
+Fixed	Fixed::max(Fixed const &f1, Fixed const &f2)
 {
 	if (f1.toFloat() > f2.toFloat())
 		return (f1);
@@ -189,7 +177,7 @@ Fixed	max(Fixed const &f1, Fixed const &f2)
 		return (f2);
 }
 
-Fixed	max(Fixed &f1, Fixed &f2)
+Fixed	Fixed::max(Fixed &f1, Fixed &f2)
 {
 	if (f1.toFloat() > f2.toFloat())
 		return (f1);
