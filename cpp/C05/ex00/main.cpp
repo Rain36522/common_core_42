@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:56:45 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/13 18:25:21 by pudry            ###   ########.fr       */
+/*   Created: 2024/01/16 15:11:06 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/16 15:11:06 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,29 @@ int main()
 	{
 		Bureaucrate rip("rip", 151);
 	}
-	catch (void)
+	catch (Bureaucrate::GradeTooHighException &msg)
 	{
-		std::cout <<"Rip is not create\n";
+		std::cout <<"Grade errror : " << msg.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrate rip("rip", 0);
+	}
+	catch (Bureaucrate::GradeTooLowException &msg)
+	{
+		std::cout <<"Grade errror : " << msg.what() << std::endl;
 	}
 	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
 	++ paul;
 	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
-	++ paul;
+	try
+	{
+		++ paul;
+	}
+	catch (Bureaucrate::GradeTooHighException &msg)
+	{
+		std::cout <<"Grade errror : " << msg.what() << std::endl;
+	}
 	std::cout << "Actual grad of " << paul.getName() << " " << paul.getGrade() << std::endl;
 		return (0);
 }
