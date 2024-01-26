@@ -17,6 +17,12 @@ std::string Bureaucrate::getName(void) const
 	return (this->_name);
 }
 
+std::ostream	&operator<<(std::ostream &o, const Bureaucrate &src)
+{
+	o << "name : " << src.getName() << ", grade : " << src.getGrade() << std::endl;
+	return (o);
+}
+
 int Bureaucrate::getGrade(void) const
 {
 	return (this->_grade);

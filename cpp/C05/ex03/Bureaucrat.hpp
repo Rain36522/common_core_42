@@ -41,4 +41,7 @@ class Bureaucrate
 		std::string	_name;
 		int			_grade;
 };
+
+std::ostream	&operator<<(std::ostream &o, const Bureaucrate &src);
+
 #endif

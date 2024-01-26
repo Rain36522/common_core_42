@@ -13,6 +13,8 @@
 #ifndef __ARRAY__HPP
 # define __ARRAY__HPP
 
+# define DEBUG std::cout << __FILE__ << ", " << __LINE__ << std::endl;
+
 # include <iostream>
 
 template <class T>
@@ -31,5 +33,6 @@ class Array
 		T		*_data;
 		size_t	_lenth;
 };
+# include "Array.tpp"
 
 #endif

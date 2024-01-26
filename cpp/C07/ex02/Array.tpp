@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.cpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 15:38:49 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/23 15:39:54 by pudry            ###   ########.ch       */
+/*   Created: 2024/01/24 09:02:19 by pudry             #+#    #+#             */
+/*   Updated: 2024/01/24 12:39:09 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+
 
 template <typename T>
 const T	&Array<T>::operator[](int i) const
@@ -33,30 +33,34 @@ T	&Array<T>::operator[](int i)
 template <typename T>
 T	&Array<T>::operator=(const Array<T> &src)
 {
-	this->_data = src._data;
+	delete[] this->_data;
 	this->_lenth = src._lenth;
+	this->_data = new T[src._lenth];
+	for (int i = 0; i < src._lenth; i ++)
+		this->_data[i] = src._data[i];
 	return (*this);
 }
 
 template <typename T>
 Array<T>::Array(const Array &src)
 {
-	*this->_data = src._data;
-	*this->_lenth = src._lenth;
+	this->_lenth = src._lenth;
+	this->_data = new T[src._lenth];
+	for (int i = 0; i < src._lenth; i ++)
+		this->_data[i] = src._data[i];
+	
 }
 template <typename T>
 Array<T>::~Array(void)
 {
-	if (this->_data && this->_lenth > 0)
-		delete[] this->_data;
-	
+	delete[] this->_data;
 }
 
 template <typename T>
 Array<T>::Array(void)
 {
-	this->_data = NULL;
 	this->_lenth = 0;
+	this->_data = new T[0];
 }
 
 template <typename T>

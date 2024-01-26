@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:10:25 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/10 10:23:43 by pudry            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:45:23 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ class Fixed
 };
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &src);
-
 #endif

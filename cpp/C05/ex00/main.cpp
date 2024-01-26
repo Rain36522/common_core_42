@@ -17,6 +17,7 @@ int main()
 {
 	Bureaucrate	paul("paul", 149);
 
+	std::cout << paul;
 	try
 	{
 		Bureaucrate rip("rip", 151);

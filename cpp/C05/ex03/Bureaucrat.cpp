@@ -22,6 +22,12 @@ int Bureaucrate::getGrade(void) const
 	return (this->_grade);
 }
 
+std::ostream	&operator<<(std::ostream &o, const Bureaucrate &src)
+{
+	o << "name : " << src.getName() << ", grade : " << src.getGrade() << std::endl;
+	return (o);
+}
+
 Bureaucrate	Bureaucrate::operator++(void)
 {
 	if (this->_grade == 150)
