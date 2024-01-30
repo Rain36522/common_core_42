@@ -33,9 +33,8 @@ def write_cpp(arg, path):
 	f.write(arg + "::" + arg + "(void){}\n")
 
 
-
-
-write_header(sys.argv[1], os.environ['PWD'])
-write_cpp(sys.argv[1], os.environ['PWD'])
+for args in sys.argv[1:]:
+	write_header(args, os.environ['PWD'])
+	write_cpp(args, os.environ['PWD'])
 
 
