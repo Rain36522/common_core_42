@@ -36,12 +36,44 @@ Base	*Base::generate(void)
 
 void	Base::identify(Base *p)
 {
-	std::cout << "Class type is : " << p->getType() << std::endl;
+	if (dynamic_cast<A *>(p))
+		std::cout << "Class type is : A" << std::endl;
+	else if (dynamic_cast<B *>(p))
+		std::cout << "Class type is : B" << std::endl;
+	else if (dynamic_cast<C *>(p))
+		std::cout << "Class type is : C" << std::endl;
 }
 
 void	Base::identify(Base &p)
 {
-	std::cout << "Class type is : " << p.getType() << std::endl;
+	try
+	{
+		(void)dynamic_cast<A &>(p);
+		std::cout << "Class type is : A" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		try
+		{
+			(void)dynamic_cast<B &>(p);
+			std::cout << "Class type is : B" << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			try
+			{
+				(void)dynamic_cast<C &>(p);
+				std::cout << "Class type is : C" << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << "Unknow type !\n";
+			}
+			
+		}
+		
+	}
+	
 }
 
 Base::~Base(void) {};

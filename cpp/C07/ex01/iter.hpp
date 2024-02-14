@@ -15,11 +15,16 @@
 # define __ITER__HPP
 # include <iostream>
 
-template <typename T> 
-void	iter(T a[], size_t ilen, void (*f)(T&))
+template <typename T> void	iter(T *a,  const size_t l, void (*f)(const T &))
 {
-	for (size_t i = 0; i < ilen; i ++)
+	for (size_t i = 0; i < l; i++)
 		f(a[i]);
-}
+};
+
+template <typename T, typename Func> void	iter(T *a,  const size_t l, Func f)
+{
+	for (size_t i = 0; i < l; i++)
+		f(a[i]);
+};
 
 #endif

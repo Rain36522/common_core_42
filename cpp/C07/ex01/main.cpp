@@ -13,13 +13,18 @@
 #include <iostream>
 #include "iter.hpp"
 
-void	iter_fc(int	&i)
+template<typename T>
+void iter_print(T val)
 {
-	i ++;
+	std::cout << val << std::endl;
 }
 
-
-int main(void)
+int main()
 {
-
+	int temp[5] = {5, 1, 2, 3, 4};
+	iter(temp, 5, iter_print);
+	std::cout << std::endl;
+	std::string why[6] = {"hello", "gutentag", "holla", "bonjour", "1", "2"};
+	iter(why, 6, iter_print);
+	return (0);
 }

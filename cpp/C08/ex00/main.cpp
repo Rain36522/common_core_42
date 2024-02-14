@@ -6,11 +6,11 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:33:31 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/24 12:50:00 by pudry            ###   ########.fr       */
+/*   Updated: 2024/02/12 11:11:16 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.tpp"
+#include "easyfind.hpp"
 #include <iostream>
 #include <array>
 

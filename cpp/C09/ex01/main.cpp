@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.tpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:30:05 by pudry             #+#    #+#             */
-/*   Updated: 2024/01/24 09:40:03 by pudry            ###   ########.fr       */
+/*   Created: 2024/02/06 12:47:35 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/13 10:39:56 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "RPN.hpp"
 
-template <typename T> bool	ft_easyfind(T contains, int n)
+int	main(int argc, char **argv)
 {
-	for (int i = 0; i <= contains.size(); i ++)
+	int	result;
+
+	if (argc != 2)
 	{
-		if (contains[i] == n)
-			return (true);
+		std::cerr << "Invalide Input\n";
+		return 1;
 	}
-	return (false);
+	RPN	a(argv[1]);
+	return 0;
 }

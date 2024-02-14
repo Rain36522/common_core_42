@@ -5,15 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/10 14:34:15 by pudry             #+#    #+#              #
-#    Updated: 2024/02/07 15:16:57 by pudry            ###   ########.fr        #
+#    Created: 2024/01/24 09:37:59 by pudry             #+#    #+#              #
+#    Updated: 2024/02/12 11:12:14 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 FLAGS = -pedantic -std=c++98 -Wall -Wextra -Werror
-NAME = templates
+NAME = easyfind
 CC = c++
 
 SRC = main.cpp
@@ -37,4 +35,3 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
-
