@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    class.py                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/31 16:25:43 by pudry             #+#    #+#              #
+#    Updated: 2024/02/01 11:13:52 by pudry            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import sys
 import os
 
@@ -31,6 +43,7 @@ def write_cpp(arg, path):
 	f.write(arg + "::" + arg + "(const " + arg + " &src)\n{\n\t\n}\n\n")
 	f.write(arg + "::~" + arg + "(void){}\n\n")
 	f.write(arg + "::" + arg + "(void){}\n")
+	f.close()
 
 
 for args in sys.argv[1:]:
