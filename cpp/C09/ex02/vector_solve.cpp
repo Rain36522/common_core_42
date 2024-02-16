@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:27:19 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 13:19:53 by pudry            ###   ########.fr       */
+/*   Updated: 2024/02/16 16:39:39 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,30 @@ std::vector<int>	solveVector(std::vector<int> v)
 {
 	std::vector<int>	vout;
 	bool				write;
+	size_t				k;
 
 	vout.push_back(v[0]);
 	for (int i = 1; i < v.size(); i ++)
 	{
-		
+		DEBUG
+		printVector(vout);
 		write = false;
-		for (size_t j = 0; j < vout.size(); j ++)
+		k = vout.size();
+		for (size_t j = 0; j < k; j ++)
 		{
 			if (vout[j] > v[i])
 			{
 				write = true;
 				vout.insert(vout.begin() + j, v[i]);
+				std::cout << "Insert : " << j << ", value : " << v[i] << std::endl;
 				break;
 			}
 			if (!write)
+			{
 				vout.push_back(v[i]);
+				std::cout << "value : " << v[i] << std::endl;
+			}
+			// std::cout << "J : " << j << std::endl;
 		}
 	}
 	return (vout);
@@ -71,25 +79,28 @@ void	vector_solve(std::vector<int> vinit, int isize)
 	printVector(vinit);
 	while (j < isize)
 	{
-		std::vector<int> chunk(vinit[j ++]);
+		std::vector<int> chunk;
+		chunk.push_back(vinit[j ++]);
 		if (j < isize)
 			chunk.push_back(vinit[j ++]);
 		varray.push_back(chunk);
 	}
-	DEBUG
+	std::cout << "Array of vector :" << std::endl;
+	printVector(varray[0]);
+	printVector(varray[1]);
 	while (varray.size() >= 2)
 	{
-		DEBUG
 		for (int k = 0; k < varray.size(); k ++)
 			varray[k] = solveVector(varray[k]);
-		DEBUG
 		for (size_t k = 0; k + 1 < varray.size(); k ++)
 		{
-			DEBUG
 			varray[k] = combineVector(varray[k], varray[k + 1]);
 			varray.erase(varray.begin() + k + 1);
 		}
-		DEBUG
 	}
+	std::cout << "1 :";
+	printVector(varray[0]);
+	varray[0] = solveVector(varray[0]);
+	std::cout << "2 :";
 	printVector(varray[0]);
 }
