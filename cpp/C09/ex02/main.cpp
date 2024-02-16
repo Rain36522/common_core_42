@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:47:35 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 12:48:31 by pudry            ###   ########.fr       */
+/*   Created: 2024/02/16 18:15:58 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/16 18:16:01 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <vector>
-#define DEBUG std::cout << "\033[31m" << __FILE__ << __LINE__ << "\033[0m" << std::endl;
-
+#include "PmergeMe.hpp"
 
 void	vector_solve(std::vector<int> vinit, int argc);
+void	deque_solve(std::deque<int> vinit, int isize);
 
 static bool	returnError(std::string s)
 {
@@ -38,8 +36,8 @@ static bool	checkInput(int argc, char **a)
 				return returnError("Invalide argument in input.");
 			j ++;
 		}
-		if (j > 9 || (j == 9 && strcmp(a[i], "2147483647") > 0))
-			return returnError("Overange number.");
+		if (j > 10 || (j == 10 && strcmp(a[i], "2147483647") > 0))
+			return returnError(("Overange number : " + std::string(a[i])));
 	}
 	return true;
 }
@@ -47,13 +45,29 @@ static bool	checkInput(int argc, char **a)
 int	main(int argc, char **argv)
 {
 	std::vector<int>	vinit;
+	std::deque<int>		dinit;
+	int					n;
+	long				start;
+	long				stop;
+
 
 	if (!checkInput(argc, argv))
 		return 1;
-	DEBUG
 	for (int i = 1; i < argc; i++)
-		vinit.push_back(atoi(argv[i]));
-	DEBUG
+	{
+		n = atoi(argv[i]);
+		vinit.push_back(n);
+		dinit.push_back(n);
+	}
+	std::cout << YELLOW << "< ========= SOLVING VECTOR ============>" << std::endl << BLUE;
+	start = std::chrono::high_resolution_clock::now();
 	vector_solve(vinit, argc - 1);
+	stop = std::chrono::high_resolution_clock::now();
+	std::cout << GREEN << "Time to solve : " << std::to_string(stop - start) << std::endl;
+	std::cout << YELLOW << "< ========= SOLVING DEQUE ============>" << std::endl << BLUE;
+	start = std::chrono::high_resolution_clock::now();
+	deque_solve(dinit, argc - 1);
+	stop = std::chrono::high_resolution_clock::now();
+	std::cout << GREEN << "Time to solve : " << std::to_string(stop - start) << std::endl;
 	return 0;
 }

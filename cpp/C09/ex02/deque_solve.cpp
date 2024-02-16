@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_solve.cpp                                   :+:      :+:    :+:   */
+/*   deque_solve.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:07:39 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 18:07:39 by pudry            ###   ########.ch       */
+/*   Created: 2024/02/16 18:07:42 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/16 18:07:42 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-static void	printVector(std::vector<int> v)
+static void	printDeque(std::deque<int> v)
 {
-	std::cout << "Vector value : ";
+	std::cout << "deque value : ";
 	for (int i = 0; i < v.size(); i++)
 	{
 		std::cout << v[i];
@@ -25,9 +25,9 @@ static void	printVector(std::vector<int> v)
 	}
 }
 
-std::vector<int>	solveVector(std::vector<int> v)
+std::deque<int>	solveDeque(std::deque<int> v)
 {
-	std::vector<int>	vout;
+	std::deque<int>	vout;
 	bool				wr;
 	size_t				k;
 
@@ -53,16 +53,16 @@ std::vector<int>	solveVector(std::vector<int> v)
 	return (vout);
 }
 
-std::vector<int>	combineVector(std::vector<int> v1, std::vector<int> v2)
+std::deque<int>	combineDeque(std::deque<int> v1, std::deque<int> v2)
 {
 	for (int i = 0; i < v2.size(); i++)
 		v1.push_back(v2[i]);
 	return v1;
 }
 
-void	vector_solve(std::vector<int> vinit, int isize)
+void	deque_solve(std::deque<int> vinit, int isize)
 {
-	std::vector<std::vector<int> >	varray;
+	std::deque<std::deque<int> >	varray;
 	size_t							i;
 	size_t							j;
 
@@ -70,7 +70,7 @@ void	vector_solve(std::vector<int> vinit, int isize)
 	i = 0;
 	while (j < isize)
 	{
-		std::vector<int> chunk;
+		std::deque<int> chunk;
 		chunk.push_back(vinit[j ++]);
 		if (j < isize)
 			chunk.push_back(vinit[j ++]);
@@ -79,13 +79,13 @@ void	vector_solve(std::vector<int> vinit, int isize)
 	while (varray.size() >= 2)
 	{
 		for (int k = 0; k < varray.size(); k ++)
-			varray[k] = solveVector(varray[k]);
+			varray[k] = solveDeque(varray[k]);
 		for (size_t k = 0; k + 1 < varray.size(); k ++)
 		{
-			varray[k] = combineVector(varray[k], varray[k + 1]);
+			varray[k] = combineDeque(varray[k], varray[k + 1]);
 			varray.erase(varray.begin() + k + 1);
 		}
 	}
-	varray[0] = solveVector(varray[0]);
-	printVector(varray[0]);
+	varray[0] = solveDeque(varray[0]);
+	printDeque(varray[0]);
 }
