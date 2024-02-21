@@ -6,7 +6,7 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 09:37:59 by pudry             #+#    #+#              #
-#    Updated: 2024/02/16 18:03:10 by pudry            ###   ########.fr        #
+#    Updated: 2024/02/18 22:27:55 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC = main.cpp vector_solve.cpp deque_solve.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
-	./PmergeMe $(INPUT)
 
 .c.o:
 	$(CC) -c -o $@ $< $(FLAGS)

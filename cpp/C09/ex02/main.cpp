@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:15:58 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 18:16:01 by pudry            ###   ########.ch       */
+/*   Created: 2024/02/18 22:32:16 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/18 22:32:42 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static bool	checkInput(int argc, char **a)
 
 int	main(int argc, char **argv)
 {
-	std::vector<int>	vinit;
-	std::deque<int>		dinit;
-	int					n;
-	long				start;
-	long				stop;
+	std::vector<int>		vinit;
+	std::deque<int>			dinit;
+	int						n;
+	clock_t					start;
+	clock_t					stop;
 
 
 	if (!checkInput(argc, argv))
@@ -60,14 +60,14 @@ int	main(int argc, char **argv)
 		dinit.push_back(n);
 	}
 	std::cout << YELLOW << "< ========= SOLVING VECTOR ============>" << std::endl << BLUE;
-	start = std::chrono::high_resolution_clock::now();
+	start = clock();
 	vector_solve(vinit, argc - 1);
-	stop = std::chrono::high_resolution_clock::now();
-	std::cout << GREEN << "Time to solve : " << std::to_string(stop - start) << std::endl;
+	stop = clock();
+	std::cout << GREEN << "Time to solve : " << std::to_string((stop - start) / 1000.0) << "us" << std::endl;
 	std::cout << YELLOW << "< ========= SOLVING DEQUE ============>" << std::endl << BLUE;
-	start = std::chrono::high_resolution_clock::now();
+	start = clock();
 	deque_solve(dinit, argc - 1);
-	stop = std::chrono::high_resolution_clock::now();
-	std::cout << GREEN << "Time to solve : " << std::to_string(stop - start) << std::endl;
+	stop = clock();
+	std::cout << GREEN << "Time to solve : " << std::to_string((stop - start) / 1000.0) << "us" << std::endl;
 	return 0;
 }

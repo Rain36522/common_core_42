@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:07:39 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 18:07:39 by pudry            ###   ########.ch       */
+/*   Created: 2024/02/18 22:30:00 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/18 22:30:04 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void	vector_solve(std::vector<int> vinit, int isize)
 		}
 	}
 	varray[0] = solveVector(varray[0]);
-	printVector(varray[0]);
+	// printVector(varray[0]);
 }

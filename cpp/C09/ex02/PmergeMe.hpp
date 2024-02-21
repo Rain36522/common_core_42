@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:09:32 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 18:09:32 by pudry            ###   ########.ch       */
+/*   Created: 2024/02/16 21:45:48 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/16 21:45:48 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <vector>
 #include <deque>
-#include <chrono>
+#include <ctime>
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"      

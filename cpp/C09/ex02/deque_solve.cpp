@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:07:42 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/16 18:07:42 by pudry            ###   ########.ch       */
+/*   Created: 2024/02/18 22:30:08 by pudry             #+#    #+#             */
+/*   Updated: 2024/02/18 22:30:12 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void	deque_solve(std::deque<int> vinit, int isize)
 		}
 	}
 	varray[0] = solveDeque(varray[0]);
-	printDeque(varray[0]);
+	// printDeque(varray[0]);
 }
