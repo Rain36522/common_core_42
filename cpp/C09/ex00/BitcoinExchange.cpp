@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Exchange.cpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:27:38 by pudry             #+#    #+#             */
-/*   Updated: 2024/02/13 12:27:40 by pudry            ###   ########.fr       */
+/*   Updated: 2024/02/22 08:02:30 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Exchange.hpp"
+#include "BitcoinExchange.hpp"
 
-double		Exchange::getChange(std::string date) const
+double		BitcoinExchange::getChange(std::string date) const
 {
-	auto	it = _dataMap.begin();
+	std::map<std::string, double>::const_iterator	it = _dataMap.begin();
 
 	while (it != _dataMap.end())
 	{
@@ -24,30 +24,32 @@ double		Exchange::getChange(std::string date) const
 				it --;
 			return (it->second);
 		}
+		it ++;
 	}
+	return 0;
 }
 
-std::string	Exchange::getLastDate(void) const
+std::string	BitcoinExchange::getLastDate(void) const
 {
-	auto it = _dataMap.end();
+	std::map<std::string, double>::const_iterator it = _dataMap.end();
 
 	return (it->first);
 }
 
-Exchange	&Exchange::operator=(const Exchange &src)
+BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &src)
 {
 	this->_dataMap = src._dataMap;
 	return (*this);
 }
 
-Exchange::Exchange(const Exchange &src)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 {
 	*this = src;
 }
 
-Exchange::~Exchange(void){}
+BitcoinExchange::~BitcoinExchange(void){}
 
-Exchange::Exchange(std::string dataFile)
+BitcoinExchange::BitcoinExchange(std::string dataFile)
 {
 	std::ifstream	file;
 	std::string		tmp;
@@ -58,6 +60,7 @@ Exchange::Exchange(std::string dataFile)
 	file.open(dataFile);
 	if (file.fail())
 		throw std::ifstream::failure("Error opening data file");
+	getline(file, tmp);
 	while (getline(file, tmp))
 	{
 		isepar = tmp.find(",");
