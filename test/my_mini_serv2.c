@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     bzero(clients, sizeof(clients));
     bzero(&serveraddr, sizeof(serveraddr));
     serveraddr.sin_family = AF_INET;
-    serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    serveraddr.sin_addr.s_addr = 0;
     serveraddr.sin_port = htons(atoi(argv[1]));
 
 
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
             {
                 if (fd == serverfd)
                 {
-                    int clientfd = accept(serverfd, (struct stockaddr *)&serveraddr, &len);
+                    int clientfd = accept(serverfd, (struct sockaddr *)&serveraddr, &len);
                     if (clientfd < 0)
                         continue;
                     if (clientfd > maxfd)
@@ -96,8 +96,21 @@ int main(int argc, char **argv)
                     }
                     else
                     {
-                        
+                        ptr = recv_msg;
+                        for (int i = 0, j = 0; j < ret; i++, j ++)
+                        {
+                            if (ptr[i] == '\n')
+                            {
+                                ptr[i] = '\0';
+                                sprintf(send_msg, "client %d: %s\n", clients[fd], ptr);
+                                ptr += i + 1;
+                                broadcast(fd);
+                                bzero(send_msg, i);
+                                i = -1;
+                            }
+                        }
                     }
+                    break;
                 }
             }
         }
