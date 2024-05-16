@@ -1,4 +1,3 @@
-
 #include<unistd.h>
 #include<stdlib.h>
 #include<string.h>
@@ -13,7 +12,6 @@ int     maxfd;
 fd_set  read_fd;
 fd_set  write_fd;
 fd_set  current;
-int     clientId;
 
 void    error(char *msg)
 {
