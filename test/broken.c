@@ -25,7 +25,7 @@ void    error(int errorCode)
 
 void    broadcast(int exceptfd)
 {
-    for (int fd = 0; fd < maxfd; fd ++)
+    for (int fd = 0; fd <= maxfd; fd ++)
     {
         if (FD_ISSET(fd, &write_fd) && fd != exceptfd)
         {
@@ -68,11 +68,11 @@ int main(int argc, char **argv)
 
         if (select(maxfd + 1, &read_fd, &write_fd, 0, 0) < 0)
             continue;
-        for (int fd = 0; fd < maxfd; fd ++)
+        for (int fd = 0; fd <= maxfd; fd ++)
         {
             if (FD_ISSET(fd, &read_fd))
             {
-                if (fd ==servfd)
+                if (fd == servfd)
                 {
                     int clientfd = accept(fd, (struct sockaddr *)&servaddr, &len);
                     if (clientfd < 0)
@@ -82,6 +82,7 @@ int main(int argc, char **argv)
                     FD_SET(clientfd, &current);
                     clients[clientfd] = maxfd ++;
                     sprintf(send_msg, "Client %d join.\n", clients[clientfd]);
+                    printf("%s", send_msg);
                     broadcast(clientfd);
                 }
                 else
@@ -99,7 +100,14 @@ int main(int argc, char **argv)
                         ptr = recv_msg;
                         for (int i = 0, j = 0; j < data; j ++, i ++)
                         {
-                            if (i)
+                            if (ptr[i] == '\n')
+                            {
+                                ptr[i] = '\0';
+                                sprintf(send_msg, "Client %d, : %s\n", clients[fd], ptr);
+                                broadcast(fd);
+                                ptr += i + 1;
+                                i = -1;                               
+                            }
                         }
                     }
                 }
