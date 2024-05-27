@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:24:22 by paul              #+#    #+#             */
-/*   Updated: 2023/10/13 14:14:16 by pudry            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:11:31 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_isalnum(int c)
 {
-	return (!(c < 0 || c > 127));
+	unsigned char	chr;
+
+	chr = (unsigned char)c;
+	if ((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z'))
+		return (c);
+	else if (chr >= '0' && chr <= '9')
+		return (c);
+	return (0);
 }

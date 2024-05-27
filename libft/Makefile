@@ -6,69 +6,73 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2023/10/17 14:01:21 by pudry            ###   ########.fr        #
+#    Updated: 2024/05/27 13:26:00 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#compilateur
+RESET = \\033[0m
+GREEN = \\033[1;32m
+
+INCLUDES = includes/
+
+# compilateur
 CC = gcc
-#flags du compilateur
+# flags du compilateur
 CFLAGS = -Wall -Wextra -Werror
-#name du fichier / dossier retourner
+# name du fichier / dossier retourné
 NAME = libft.a
-#source : nom des fichiers
-SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+
+# source : nom des fichiers
+SRC1 = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
 	ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
 	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c \
 	ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
-	
 
-#Reprise des noms du fichier et remplacement du .c en .o
-#OBJ = $(SRC:.c=.o)
-OBJ = ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
-	ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o \
-	ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o \
-	ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o \
-	ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o \
-	ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o \
-	ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o
+# Reprise des noms du fichier et remplacement du .c en .o
+OBJ1 = $(SRC1:.c=.o)
 
-SRC_bonus = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+SRC = $(addprefix src/, $(SRC1))
+OBJ = $(addprefix objet/, $(OBJ1))
+
+SRC_bonus1 = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 			ft_lstmap.c
 
-OBJ_bonus = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
-			ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o \
-			ft_lstmap.o
+OBJ_bonus1 = $(SRC_bonus1:.c=.o)
+OBJ_bonus = $(addprefix objet/, $(OBJ_bonus1))
 
-#cette ligne dit comment génerer le fichier name avec les objets
-#c'est une fonction.
-$(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+# cette ligne dit comment générer le fichier name avec les objets
+# c'est une fonction.
 
-#fonction pour générer le fichier Libft.a
-all : gen_obj $(NAME)
+# fonction pour générer le fichier Libft.a
+all: $(NAME)
+	@echo "${GREEN}Libft compilation success${RESET}"
 
-bonus : $(OBJ_bonus)
-	ar rcs $(NAME) $(OBJ_bonus)
+$(NAME): $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
-#fonction nettoyage fichier objet
-clean :
-	rm -f $(OBJ) $(OBJ_bonus)
-#nettoyage fichier objet + delete libft.a
-fclean : clean
-	rm -f $(NAME)
-#delete all file et compile again
-re : fclean all
+# bonus: $(OBJ_bonus)
+# 	@ar rcs $(NAME) $(OBJ_bonus)
 
-gen_obj :
-	$(CC) $(CFLAGS) -c $(SRC)
+# fonction nettoyage fichier objet
+clean:
+	@rm -f $(OBJ) $(OBJ_bonus)
+	@echo "${GREEN}Libft clean${RESET}"
 
-gen_obj_bonus :
-	$(CC) $(CFLAGS) -c $(SRC_bonus)
+# nettoyage fichier objet + delete libft.a
+fclean: clean
+	@rm -f $(NAME)
+	@echo "${GREEN}Libft fclean${RESET}"
 
-#Ligne pour éviter que ces fonctions puissent être considéré comme fichier
+# delete all file et compile again
+re: fclean all
+
+# règle implicite pour compiler .c en .o
+objet/%.o: src/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
+
+# Ligne pour éviter que ces fonctions puissent être considérées comme fichier
 .PHONY: clean fclean all re bonus
