@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 18:33:07 by paul              #+#    #+#             */
-/*   Updated: 2024/06/13 17:18:03 by pudry            ###   ########.fr       */
+/*   Created: 2024/06/13 17:13:50 by pudry             #+#    #+#             */
+/*   Updated: 2024/06/13 17:14:35 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *str, size_t dstsize)
+void    ft_exit(int icode, char *str)
 {
-	size_t	i;
-
-	i = 0;
-	if (dstsize == 0)
-		return (ft_strlen(str));
-	while (str[i] && i < dstsize - 1)
-	{
-		dest[i] = str[i];
-		i ++;
-	}
-	dest[i] = '\0';
-	return (ft_strlen(str));
+    if (str && *str)
+        write(2, str, ft_strlen(str));
+    exit(icode);
 }

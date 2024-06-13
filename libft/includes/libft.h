@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pudry <pudry@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:19:47 by pudry             #+#    #+#             */
-/*   Updated: 2024/05/27 15:42:28 by pudry            ###   ########.fr       */
+/*   Created: 2024/06/13 18:07:55 by pudry             #+#    #+#             */
+/*   Updated: 2024/06/13 18:07:55 by pudry            ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 // added
 int 			ft_isint(char *str);
 int				ft_strcmp(const char *str1, const char *str2);
+void            ft_exit(int icode, char *str);
+char            *ft_strldup(const char *src, size_t n);
+char            **ft_split_multiple(char *str, char *str_c);
 
 #endif

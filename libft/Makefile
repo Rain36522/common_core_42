@@ -6,13 +6,13 @@
 #    By: pudry <pudry@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:40:33 by paul              #+#    #+#              #
-#    Updated: 2024/06/13 16:30:55 by pudry            ###   ########.fr        #
+#    Updated: 2024/06/13 18:13:50 by pudry            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 RESET = \\033[0m
 GREEN = \\033[1;32m
-
+BLUE = \033[1;34m
 INCLUDES = includes/
 
 # compilateur
@@ -33,7 +33,10 @@ OBJ = $(SRC:src/%.c=objet/%.o)
 
 # fonction pour générer le fichier Libft.a
 all: $(NAME)
-	@echo "${GREEN}Libft compilation success${RESET}"
+	@echo "${GREEN}Libft compilation success"
+	@echo "${BLUE}-I $(PWD)/includes -L $(PWD)/$(NAME) -lft"
+	@echo "for header and librairie${RESET}"
+	@echo "#include \"libft.h\""
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
