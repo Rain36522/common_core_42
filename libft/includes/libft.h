@@ -6,7 +6,7 @@
 /*   By: pudry <pudry@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:19:47 by pudry             #+#    #+#             */
-/*   Updated: 2024/05/27 15:13:45 by pudry            ###   ########.fr       */
+/*   Updated: 2024/05/27 15:42:28 by pudry            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 				void (*del) (void *));
+
+// added
 int 			ft_isint(char *str);
+int				ft_strcmp(const char *str1, const char *str2);
 
 #endif
